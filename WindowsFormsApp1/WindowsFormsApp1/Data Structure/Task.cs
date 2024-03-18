@@ -22,7 +22,7 @@ namespace WindowsFormsApp1
         Easy
     }
 
-    class Task
+    public class Task
     {
         public int TaskID;
         public string TaskName;
