@@ -47,6 +47,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Create Project\UCRoundedTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Create Project\UCRoundedTextBox.Designer.cs">
+      <DependentUpon>UCRoundedTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Create Project\UCCreateProject.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Create Project\UCCreateProject.Designer.cs">
+      <DependentUpon>UCCreateProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Create Project\UCNewProject.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Create Project\UCNewProject.Designer.cs">
+      <DependentUpon>UCNewProject.cs</DependentUpon>
+    </Compile>
     <Compile Include="Data Structure\Attachment.cs" />
     <Compile Include="Data Structure\Employee.cs" />
     <Compile Include="Data Structure\EmployeeRole.cs" />
@@ -78,6 +96,15 @@
     <Compile Include="Task Page\Task Custom Control\RoundedLabel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <EmbeddedResource Include="Create Project\UCRoundedTextBox.resx">
+      <DependentUpon>UCRoundedTextBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Create Project\UCCreateProject.resx">
+      <DependentUpon>UCCreateProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Create Project\UCNewProject.resx">
+      <DependentUpon>UCNewProject.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
