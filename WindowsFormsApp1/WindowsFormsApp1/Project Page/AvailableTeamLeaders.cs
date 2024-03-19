@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1
+namespace WindowsFormsApp1.Project_Page
 {
-    public partial class Form1 : Form
+    public partial class AvailableTeamLeaders : UserControl
     {
-        public Form1()
+        public AvailableTeamLeaders()
         {
             InitializeComponent();
-        }
-
-        private void addProject1_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

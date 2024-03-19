@@ -24,15 +24,15 @@ namespace WindowsFormsApp1
 
     public class Task
     {
-        public int TaskID;
-        public string TaskName;
-        public string TaskDesc;
-        public int TeamLeadID;
-        public int TeamMemberID;
-        public int ProjectID;
-        public TaskStatus StatusOfTask;
-        public Priority TaskPriority;
-        public DateTime StartDate;
-        public DateTime EndDate;
+        public int TaskID { get; set; }
+        public string TaskName { get; set; }
+        public string TaskDesc { get; set; }
+        public int AssignedB { get; set; }
+        public int AssignedTo { get; set; }
+        public int VersionID { get; set; }
+        public TaskStatus StatusOfTask { get; set; }
+        public Priority TaskPriority { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
     }
 }

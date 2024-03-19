@@ -34,6 +34,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DatabaseLibrary">
+      <HintPath>..\..\..\..\..\Downloads\DatabaseLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="GoLibrary">
+      <HintPath>..\..\..\..\..\Downloads\GoLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data">
+      <HintPath>..\..\..\..\..\Downloads\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySQLDatabase">
+      <HintPath>..\..\..\..\..\Downloads\MySQLDatabase.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -49,9 +61,9 @@
   <ItemGroup>
     <Compile Include="Data Structure\Attachment.cs" />
     <Compile Include="Data Structure\Employee.cs" />
-    <Compile Include="Data Structure\EmployeeRole.cs" />
-    <Compile Include="Data Structure\ProjectManaging.cs" />
+    <Compile Include="Data Structure\ManagingEmployee.cs" />
     <Compile Include="Data Structure\Projects.cs" />
+    <Compile Include="Data Structure\ProjectVersion.cs" />
     <Compile Include="Data Structure\SourceCode.cs" />
     <Compile Include="Data Structure\Task.cs" />
     <Compile Include="Form1.cs">
@@ -60,13 +72,46 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Manager\AttachmentManager.cs" />
+    <Compile Include="Main Form\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main Form\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main Form\ProfilePicAndName.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Main Form\ProfilePicAndName.Designer.cs">
+      <DependentUpon>ProfilePicAndName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main Form\ProfilePictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Main Form\TriangleHighlightPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Manager\DataHandler.cs" />
     <Compile Include="Manager\EmployeeManager.cs" />
-    <Compile Include="Manager\ProjectManagingManager.cs" />
-    <Compile Include="Manager\ProjectsManager.cs" />
-    <Compile Include="Manager\SourceCodeManager.cs" />
-    <Compile Include="Manager\TaskManager.cs" />
+    <Compile Include="Manager\VersionManager.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Project Page\AddProject.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Project Page\AddProject.Designer.cs">
+      <DependentUpon>AddProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Project Page\AvailableTeamLeaders.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Project Page\AvailableTeamLeaders.Designer.cs">
+      <DependentUpon>AvailableTeamLeaders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Project Page\InitializePage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Project Page\InitializePage.Designer.cs">
+      <DependentUpon>InitializePage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Task Page\Task Custom Control\Calendar.cs">
       <SubType>Form</SubType>
@@ -80,6 +125,21 @@
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main Form\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main Form\ProfilePicAndName.resx">
+      <DependentUpon>ProfilePicAndName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Project Page\AddProject.resx">
+      <DependentUpon>AddProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Project Page\AvailableTeamLeaders.resx">
+      <DependentUpon>AvailableTeamLeaders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Project Page\InitializePage.resx">
+      <DependentUpon>InitializePage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -107,8 +167,36 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Images\" />
+    <None Include="Images\Notify Off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Notify On.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-home-30 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-home-30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Home Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Home Normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Project Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Project Normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Ticket Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Ticket Normal.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
