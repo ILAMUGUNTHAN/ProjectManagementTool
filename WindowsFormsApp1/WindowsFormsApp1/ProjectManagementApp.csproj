@@ -47,6 +47,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BoardView\UCCompletedStatus.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BoardView\UCCompletedStatus.Designer.cs">
+      <DependentUpon>UCCompletedStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BoardView\UCInprogressStatus.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BoardView\UCInprogressStatus.Designer.cs">
+      <DependentUpon>UCInprogressStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BoardView\UCTaskBoard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BoardView\UCTaskBoard.Designer.cs">
+      <DependentUpon>UCTaskBoard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BoardView\UCToDoStatus.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BoardView\UCToDoStatus.Designer.cs">
+      <DependentUpon>UCToDoStatus.cs</DependentUpon>
+    </Compile>
     <Compile Include="Create Project\UCRoundedTextBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -96,6 +120,18 @@
     <Compile Include="Task Page\Task Custom Control\RoundedLabel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <EmbeddedResource Include="BoardView\UCCompletedStatus.resx">
+      <DependentUpon>UCCompletedStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BoardView\UCInprogressStatus.resx">
+      <DependentUpon>UCInprogressStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BoardView\UCTaskBoard.resx">
+      <DependentUpon>UCTaskBoard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BoardView\UCToDoStatus.resx">
+      <DependentUpon>UCToDoStatus.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Create Project\UCRoundedTextBox.resx">
       <DependentUpon>UCRoundedTextBox.cs</DependentUpon>
     </EmbeddedResource>
