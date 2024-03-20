@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
-    public class Projects
+    public class ManagingEmployee
     {
-        public int ProjectID { get; set; }
-        public string ProjectName { get; set; }
-        public string ProjectDesc { get; set; }
+        public int ManagingEmployeeID { get; set; }
         public int ManagerID { get; set; }
         public int TeamLeadID { get; set; }
+        public int TeamMemberID { get; set; }
     }
 }

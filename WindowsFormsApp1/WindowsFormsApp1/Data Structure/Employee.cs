@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
-    class Employee
+    public class Employee
     {
-        public string EmpPassword;
-        public int EmployeeID;
-        public string EmployeeName;
-        public int EmpRoleID;
-        public int EmpSuperiorID;
-        public string EmpEmail;
-        public DateTime EmpDOB;
-        public string EmpProfile;
+        public int EmployeeID { get; set; }
+        public string EmployeeFirstName { get; set; }
+        public string EmployeeLastName { get; set; }
+        public string EmpRoleName { get; set; }
+        public string EmpEmail { get; set; }
+        public DateTime EmpDOB { get; set; }
+        public string EmpProfileLocation { get; set; }
+        public string EmpPassword { get; set; }
     }
 }

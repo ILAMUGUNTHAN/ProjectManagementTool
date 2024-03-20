@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
-    class SourceCode
+    public class SourceCode
     {
-        public int SourceCodeID;
-        public int TaskID;
-        public string CommitName;
-        public string SourceCodeLocation;
-        public DateTime SubmittedDate;
+        public int SourceCodeID { get; set; }
+        public int TaskID { get; set; }
+        public string CommitName { get; set; }
+        public string SourceCodeLocation { get; set; }
+        public DateTime SubmittedDate { get; set; }
     }
 }
