@@ -15,7 +15,7 @@ namespace WindowsFormsApp1
             {
                 EmpRoleName = "Team Leader",
                 EmployeeFirstName = "Pugazhenthi",
-                EmpProfileLocation = "\\\\SPARE-2709DFQ\\Project Management Tool\\Profiles\\Pugazhenthi Thaniarasu I R.jpg"
+                EmpProfileLocation = "\\\\SPARE-2709DFQ\\Project Management Tool\\Profiles\\pugazhenthiir2002.jpg"
             };
         }
 
@@ -33,10 +33,11 @@ namespace WindowsFormsApp1
             return false;
         }
 
-        public static List<Employee> FetchAvailableTeamLeaders()
+        public static List<Employee> FetchAvailableTeamLeaders(DateTime projectStartDate, DateTime projectEndDate)
         {
-            List<int> teamLeadIDs = new List<int>();
             List<Employee> result = new List<Employee>();
+            List<int> teamLeadIDs = new List<int>();
+
             foreach(var Iter in ManagingEmployeeCollection)
             {
                 if(Iter.ManagerID == CurrentEmployee.EmployeeID)
@@ -45,7 +46,7 @@ namespace WindowsFormsApp1
                 }
             }
 
-            teamLeadIDs = VersionManager.AvailableTeams(teamLeadIDs);
+            teamLeadIDs = VersionManager.AvailableTeamIDs(teamLeadIDs, projectStartDate, projectEndDate);
 
             foreach(var Iter in EmployeeCollection)
             {

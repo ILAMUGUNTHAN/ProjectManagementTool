@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApp1.Project_Page
+﻿namespace WindowsFormsApp1
 {
     partial class AvailableTeamLeaders
     {
@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.profilePanel = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -39,36 +39,40 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(347, 70);
+            this.panel1.Size = new System.Drawing.Size(258, 45);
             this.panel1.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 70);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(347, 354);
-            this.panel2.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(347, 70);
+            this.label1.Size = new System.Drawing.Size(258, 45);
             this.label1.TabIndex = 0;
             this.label1.Text = "Team Leader";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // profilePanel
+            // 
+            this.profilePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.profilePanel.Location = new System.Drawing.Point(0, 45);
+            this.profilePanel.Margin = new System.Windows.Forms.Padding(2);
+            this.profilePanel.Name = "profilePanel";
+            this.profilePanel.Size = new System.Drawing.Size(258, 338);
+            this.profilePanel.TabIndex = 1;
+            // 
             // AvailableTeamLeaders
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.profilePanel);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AvailableTeamLeaders";
-            this.Size = new System.Drawing.Size(347, 424);
+            this.Size = new System.Drawing.Size(258, 383);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -77,7 +81,7 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel profilePanel;
         private System.Windows.Forms.Label label1;
     }
 }

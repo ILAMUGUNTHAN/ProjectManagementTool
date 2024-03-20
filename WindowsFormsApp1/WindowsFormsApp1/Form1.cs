@@ -15,11 +15,12 @@ namespace WindowsFormsApp1
         public Form1()
         {
             InitializeComponent();
+            DataHandler.ConnectDatabase();
         }
 
-        private void addProject1_Load(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-
+            DataHandler.StoreProjectVersionDetails();
         }
     }
 }
