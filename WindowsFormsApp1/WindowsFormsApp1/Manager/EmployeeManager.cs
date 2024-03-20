@@ -15,7 +15,7 @@ namespace WindowsFormsApp1
             {
                 EmpRoleName = "Team Leader",
                 EmployeeFirstName = "Pugazhenthi",
-                EmpProfileLocation = "C:\\Users\\pugaz\\Downloads\\Profile.jpg"
+                EmpProfileLocation = "\\\\SPARE-2709DFQ\\Project Management Tool\\Profiles\\Pugazhenthi Thaniarasu I R.jpg"
             };
         }
 

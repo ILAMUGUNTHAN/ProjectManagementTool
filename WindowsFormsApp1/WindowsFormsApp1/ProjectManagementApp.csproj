@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>WindowsFormsApp1</RootNamespace>
     <AssemblyName>WindowsFormsApp1</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -35,16 +35,19 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DatabaseLibrary">
-      <HintPath>..\..\..\..\..\Downloads\DatabaseLibrary.dll</HintPath>
+      <HintPath>..\..\..\..\..\Documents\IPMsg\AutoSave\Components\DatabaseLibrary.dll</HintPath>
     </Reference>
     <Reference Include="GoLibrary">
-      <HintPath>..\..\..\..\..\Downloads\GoLibrary.dll</HintPath>
+      <HintPath>..\..\..\..\..\Documents\IPMsg\AutoSave\Components\GoLibrary.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data">
-      <HintPath>..\..\..\..\..\Downloads\MySql.Data.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\MySQL\MySQL Installer for Windows\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySqlBackup">
+      <HintPath>..\..\..\..\..\Documents\IPMsg\AutoSave\Components\MySqlBackup.dll</HintPath>
     </Reference>
     <Reference Include="MySQLDatabase">
-      <HintPath>..\..\..\..\..\Downloads\MySQLDatabase.dll</HintPath>
+      <HintPath>..\..\..\..\..\Documents\IPMsg\AutoSave\Components\MySQLDatabase.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
