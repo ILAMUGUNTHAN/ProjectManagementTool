@@ -15,11 +15,17 @@ namespace WindowsFormsApp1
         public Form1()
         {
             InitializeComponent();
+            DataHandler.ConnectDatabase();
+            DataHandler.StoreEmployeeDetails();
+            DataHandler.StoreEmployeeManagingDetails();
+            DataHandler.StoreProjectDetails();
+            DataHandler.StoreProjectVersionDetails();
+            EmployeeManager.LogInEmployee("paulrobin98@gmail.com", "Lucid123");
         }
 
-        private void addProject1_Load(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-
+            var x = VersionManager.FetchTeamLeadAvailableDate(3);
         }
     }
 }

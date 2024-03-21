@@ -11,7 +11,8 @@ namespace WindowsFormsApp1
         NotYetStarted,
         Stuck,
         OnProcess,
-        Done
+        Done, 
+        Archive
     }
 
     public enum Priority
@@ -27,7 +28,7 @@ namespace WindowsFormsApp1
         public int TaskID { get; set; }
         public string TaskName { get; set; }
         public string TaskDesc { get; set; }
-        public int AssignedB { get; set; }
+        public int AssignedBy { get; set; }
         public int AssignedTo { get; set; }
         public int VersionID { get; set; }
         public TaskStatus StatusOfTask { get; set; }

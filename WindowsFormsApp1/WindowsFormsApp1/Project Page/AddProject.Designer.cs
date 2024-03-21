@@ -44,8 +44,9 @@
             this.panel1.Controls.Add(this.tableLayoutPanel1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1013, 68);
+            this.panel1.Size = new System.Drawing.Size(662, 44);
             this.panel1.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -61,7 +62,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1013, 68);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(662, 44);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // versionUpgradeButton
@@ -72,10 +73,10 @@
             this.versionUpgradeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.versionUpgradeButton.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.versionUpgradeButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.versionUpgradeButton.Location = new System.Drawing.Point(506, 0);
+            this.versionUpgradeButton.Location = new System.Drawing.Point(331, 0);
             this.versionUpgradeButton.Margin = new System.Windows.Forms.Padding(0);
             this.versionUpgradeButton.Name = "versionUpgradeButton";
-            this.versionUpgradeButton.Size = new System.Drawing.Size(507, 68);
+            this.versionUpgradeButton.Size = new System.Drawing.Size(331, 44);
             this.versionUpgradeButton.TabIndex = 0;
             this.versionUpgradeButton.Text = "Version Upgrade";
             this.versionUpgradeButton.UseVisualStyleBackColor = false;
@@ -92,7 +93,7 @@
             this.initializeButton.Location = new System.Drawing.Point(0, 0);
             this.initializeButton.Margin = new System.Windows.Forms.Padding(0);
             this.initializeButton.Name = "initializeButton";
-            this.initializeButton.Size = new System.Drawing.Size(506, 68);
+            this.initializeButton.Size = new System.Drawing.Size(331, 44);
             this.initializeButton.TabIndex = 1;
             this.initializeButton.Text = "Initialize";
             this.initializeButton.UseVisualStyleBackColor = false;
@@ -102,28 +103,31 @@
             // 
             this.panel2.Controls.Add(this.initializePage1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 68);
+            this.panel2.Location = new System.Drawing.Point(0, 44);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1013, 409);
+            this.panel2.Size = new System.Drawing.Size(662, 444);
             this.panel2.TabIndex = 1;
             // 
             // initializePage1
             // 
             this.initializePage1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.initializePage1.Location = new System.Drawing.Point(0, 0);
+            this.initializePage1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.initializePage1.Name = "initializePage1";
-            this.initializePage1.Size = new System.Drawing.Size(1013, 409);
+            this.initializePage1.Size = new System.Drawing.Size(662, 444);
             this.initializePage1.TabIndex = 0;
             // 
             // AddProject
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "AddProject";
-            this.Size = new System.Drawing.Size(1013, 477);
+            this.Size = new System.Drawing.Size(662, 488);
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
