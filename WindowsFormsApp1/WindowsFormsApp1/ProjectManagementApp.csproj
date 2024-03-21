@@ -35,22 +35,25 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DatabaseLibrary">
-      <HintPath>..\..\..\..\..\Documents\IPMsg\AutoSave\Components\DatabaseLibrary.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\Components\DatabaseLibrary.dll</HintPath>
     </Reference>
     <Reference Include="GoLibrary">
-      <HintPath>..\..\..\..\..\Documents\IPMsg\AutoSave\Components\GoLibrary.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\Components\GoLibrary.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\MySQL\MySQL Installer for Windows\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="MySqlBackup">
-      <HintPath>..\..\..\..\..\Documents\IPMsg\AutoSave\Components\MySqlBackup.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\Components\MySqlBackup.dll</HintPath>
     </Reference>
     <Reference Include="MySQLDatabase">
-      <HintPath>..\..\..\..\..\Documents\IPMsg\AutoSave\Components\MySQLDatabase.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\Components\MySQLDatabase.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\..\..\..\..\Desktop\Components\System.Data.SQLite.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -168,6 +171,12 @@
     <Compile Include="Task Page\Task Custom Control\RoundedLabel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="View Project\ProjectBoard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View Project\ProjectBoard.Designer.cs">
+      <DependentUpon>ProjectBoard.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="BoardView\UCCompletedStatus.resx">
       <DependentUpon>UCCompletedStatus.cs</DependentUpon>
     </EmbeddedResource>
@@ -220,6 +229,9 @@
     <EmbeddedResource Include="Task Page\Task Custom Control\Calendar.resx">
       <DependentUpon>Calendar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View Project\ProjectBoard.resx">
+      <DependentUpon>ProjectBoard.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -233,7 +245,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Images\Notify Off.png" />
   </ItemGroup>
