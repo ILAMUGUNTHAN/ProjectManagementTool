@@ -9,6 +9,7 @@ namespace WindowsFormsApp1
     public static class EmployeeManager
     {
         public static Employee CurrentEmployee { get; private set; }
+
         static EmployeeManager()
         {
             CurrentEmployee = new Employee()
@@ -26,6 +27,15 @@ namespace WindowsFormsApp1
                 if(Iter.EmpEmail == username && Iter.EmpPassword == password)
                 {
                     CurrentEmployee = Iter;
+                    StoreDatum();
+                    if(Iter.EmpRoleName == "Team Leader")
+                    {
+                        VersionManager.SetCurrentWorkingVersion(Iter.EmployeeID);
+                    }
+                    else
+                    {
+                        VersionManager.SetCurrentWorkingVersion(GetTeamLeadIDFromMemberID(Iter.EmployeeID));
+                    }
                     return true;
                 }
             }
@@ -33,11 +43,27 @@ namespace WindowsFormsApp1
             return false;
         }
 
+        //Shows Team Members for Logged in TeamMembers
+        public static List<Employee> FetchTeamMembersForTeamLeaders()
+        {
+            List<Employee> result = new List<Employee>();
+
+            foreach(var Iter in ManagingEmployeeCollection)
+            {
+                if(Iter.TeamLeadID == CurrentEmployee.EmployeeID)
+                {
+                    result.Add(FetchEmployeeFromID(Iter.TeamMemberID));
+                }
+            }
+
+            return result;
+        }
+
         public static List<Employee> FetchAvailableTeamLeaders(DateTime projectStartDate, DateTime projectEndDate)
         {
             List<Employee> result = new List<Employee>();
-            List<int> teamLeadIDs = new List<int>();
-
+            //List<int> teamLeadIDs = new List<int>();
+            HashSet<int> teamLeadIDs = new HashSet<int>();
             foreach(var Iter in ManagingEmployeeCollection)
             {
                 if(Iter.ManagerID == CurrentEmployee.EmployeeID)
@@ -57,6 +83,54 @@ namespace WindowsFormsApp1
             }
 
             return result;
+        }
+
+        public static Employee FetchEmployeeFromProjectID(int projectID)
+        {
+            int employeeID = VersionManager.FetchTeamLeadIDFromProjectID(projectID);
+
+            foreach (var Iter in EmployeeCollection)
+            {
+                if(Iter.EmployeeID == employeeID)
+                {
+                    return Iter;
+                }
+            }
+
+            return null;
+        }
+
+        private static Employee FetchEmployeeFromID(int empID)
+        {
+            foreach(var Iter in EmployeeCollection)
+            {
+                if(Iter.EmployeeID == empID)
+                {
+                    return Iter;
+                }
+            }
+            return null;
+        }
+
+        private static int GetTeamLeadIDFromMemberID(int empID)
+        {
+            foreach(var Iter in ManagingEmployeeCollection)
+            {
+                if(Iter.TeamMemberID == empID)
+                {
+                    return Iter.TeamLeadID;
+                }
+            }
+
+            return -1;
+        }
+
+        private static void StoreDatum()
+        {
+            DataHandler.StoreEmployeeManagingDetails();
+            DataHandler.StoreProjectDetails();
+            DataHandler.StoreProjectVersionDetails();
+            DataHandler.StoreTaskDetails();
         }
 
         public static List<Employee> EmployeeCollection;

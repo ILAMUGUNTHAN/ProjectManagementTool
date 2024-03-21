@@ -9,6 +9,8 @@ namespace WindowsFormsApp1
     public static class VersionManager
     {
 
+        public static ProjectVersion CurrentVersion { get; set; }
+
         public static void AddProject(string projectName, string versionDesc, int teamLeadID, DateTime startDate, DateTime endDate, string clientEmail, List<VersionAttachment> versionAttachments)
         {
             Projects newProject = new Projects()
@@ -59,12 +61,97 @@ namespace WindowsFormsApp1
             VersionCollection.Add(newVersion);
         }
 
-        public static void UpdateVersion()
+        public static void UpdateVersion(int versionID, string versionName, string versionDesc, DateTime startDate, DateTime endDate, string clientEmail, List<VersionAttachment> versionAttachments)
         {
-
+            foreach(var Iter in VersionCollection)
+            {
+                if(Iter.VersionID == versionID)
+                {
+                    Iter.VersionName = versionName;
+                    Iter.VersionDescription = versionDesc;
+                    Iter.StartDate = startDate;
+                    Iter.EndDate = endDate;
+                    Iter.ClientEmail = clientEmail;
+                    DataHandler.UpdateVersion(Iter);
+                    DataHandler.UpdateVersionAttachments(Iter.VersionID, versionAttachments);
+                    return;
+                }
+            }
         }
 
-        //Checks if Project is Already Available for the Project
+        //Sets Current On Process Project Version for Logged In Employee
+        public static void SetCurrentWorkingVersion(int teamLeadID)
+        {
+            foreach(var Iter in ProjectCollection)
+            {
+                if (Iter.TeamLeadID == teamLeadID)
+                {
+                    foreach (var ctr in VersionCollection)
+                    {
+                        if (ctr.ProjectID == Iter.ProjectID && ctr.StatusOfVersion == ProjectStatus.OnProcess)
+                        {
+                            CurrentVersion = ctr;
+                            return;
+                        }
+                    }
+                }
+
+            }
+        }
+
+        //Fetch All Version Names From Project ID Order By Descending Order
+        public static List<ProjectVersion> FetchAllVersionFromProjectID(int projectID)
+        {
+            List<ProjectVersion> result = new List<ProjectVersion>();
+
+            foreach(var Iter in VersionCollection)
+            {
+                if(Iter.ProjectID == projectID)
+                {
+                    result.Add(Iter);
+                }
+            }
+
+            result.Sort((r1, r2) => r2.EndDate.CompareTo(r1.EndDate));
+
+            return result;
+        }
+
+        //Fetches Team Leader Available Date for Project /  Version
+        public static DateTime FetchTeamLeadAvailableDate(int teamLeadID)
+        {
+            DateTime availableDate = DateTime.MinValue;
+
+            foreach(var Iter in VersionCollection)
+            {
+                if(teamLeadID == FetchTeamLeadIDFromProjectID(Iter.ProjectID) && (availableDate <= Iter.EndDate))
+                {
+                    availableDate = Iter.EndDate;
+                }
+            }
+
+            return availableDate;
+        }
+
+        //Fetched Project's Latest Version
+        public static ProjectVersion FetchProjectLatestVersion(int projectID)
+        {
+            ProjectVersion latestVersion = new ProjectVersion();
+            DateTime latestDate = DateTime.MinValue;
+
+            foreach(var Iter in VersionCollection)
+            {
+                if(Iter.ProjectID == projectID && (latestDate <= Iter.EndDate))
+                {
+                    latestVersion = Iter;
+                    latestDate = Iter.EndDate;
+                }
+            }
+
+            return latestVersion;
+        }
+
+        //Checks if Project Name is Already Available
         public static bool CanAddProject(string projectName)
         {
             foreach(var Iter in ProjectCollection)
@@ -78,7 +165,7 @@ namespace WindowsFormsApp1
             return true;
         }
 
-        //Checks if Version is Already Available for the Project
+        //Checks if Version Name is Already Available for the Project
         public static bool CanAddVersion(string versionName, int projectID)
         {
             foreach(var Iter in VersionCollection)
@@ -92,12 +179,12 @@ namespace WindowsFormsApp1
             return true;
         }
 
-        //Checks if Team Leader is Available for Version Upgrade for Project
-        public static bool IsTeamLeadAvailableForVersionUpgrade(int projectID, DateTime startDate, DateTime endDate)
+        //Checks if Team Leader is Available for Version Upgrade for Project or New Project
+        public static bool IsTeamAvailableForProject(int teamLeadID, DateTime startDate, DateTime endDate)
         {
             foreach(var Iter in VersionCollection)
             {
-                if(Iter.ProjectID == projectID && ((Iter.StartDate <= startDate && startDate <= Iter.EndDate) || (Iter.StartDate <= endDate && endDate<= Iter.EndDate)))
+                if(teamLeadID == FetchTeamLeadIDFromProjectID(Iter.ProjectID) && ((Iter.StartDate <= startDate && startDate <= Iter.EndDate) || (Iter.StartDate <= endDate && endDate<= Iter.EndDate)))
                 {
                     return false;
                 }
@@ -106,47 +193,34 @@ namespace WindowsFormsApp1
             return true;
         }
 
-        //Based on Not in UpcomingProjects and Not in OnProcessProjects
-        public static List<int> AvailableTeamIDs(List<int> teamIDs, DateTime projectStartDate, DateTime projectEndDate)     
+        //Available Team Leaders for Assigning New Projects
+        public static HashSet<int> AvailableTeamIDs(HashSet<int> teamIDs, DateTime projectStartDate, DateTime projectEndDate)     
         {
-            List<int> result = new List<int>();
-
-            foreach(var Iter in teamIDs)
+            int teamID = -1;
+            foreach(var Iter in VersionCollection)
             {
-                if (IsTLEligibleForProjectVersion(Iter, projectStartDate, projectEndDate))
+                if(teamIDs.Contains(teamID = FetchTeamLeadIDFromProjectID(Iter.ProjectID)) && ((Iter.StartDate <= projectStartDate && projectStartDate <= Iter.EndDate) || (Iter.StartDate <= projectEndDate && projectEndDate <= Iter.EndDate)))
                 {
-                    result.Add(Iter);
+                    teamIDs.Remove(teamID);
+                    teamID = -1;
                 }
             }
 
-            return result;
+            return teamIDs;
         }
 
-        //Is Team Leader is Eligible for Created Project Version
-        private static bool IsTLEligibleForProjectVersion(int teamLeadID, DateTime projectStartDate, DateTime projectEndDate)
-        {
-            foreach(var Iter in VersionCollection)
-            {
-                if (((Iter.StatusOfVersion == ProjectStatus.OnProcess && IsTLEligibleForProject(teamLeadID, Iter.ProjectID)) || (Iter.StatusOfVersion == ProjectStatus.Upcoming && IsTLEligibleForProject(teamLeadID, Iter.ProjectID))) && (Iter.StartDate <= projectStartDate && projectStartDate <= Iter.EndDate) || (Iter.StartDate <= projectEndDate && projectEndDate <= Iter.EndDate))
-                {
-                    return false;
-                } 
-            }
-
-            return true;
-        }
-
-        //To Check the Team Leader is in Project Version from Project Collection
-        private static bool IsTLEligibleForProject(int teamLeadID, int projectID)
+        //Gets Team Leaders ID from Project ID
+        public static int FetchTeamLeadIDFromProjectID(int projectID)
         {
             foreach(var Iter in ProjectCollection)
             {
-                if(Iter.ProjectID == projectID && Iter.TeamLeadID == teamLeadID)
+                if(Iter.ProjectID == projectID)
                 {
-                    return true;
+                    return Iter.TeamLeadID;
                 }
             }
-            return false;
+
+            return -1;
         }
 
         public static List<Projects> ProjectCollection;

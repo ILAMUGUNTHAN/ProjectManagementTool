@@ -62,7 +62,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data Structure\Attachment.cs" />
+    <Compile Include="Data Structure\TaskAttachment.cs" />
     <Compile Include="Data Structure\Employee.cs" />
     <Compile Include="Data Structure\ManagingEmployee.cs" />
     <Compile Include="Data Structure\Projects.cs" />
@@ -96,6 +96,7 @@
     </Compile>
     <Compile Include="Manager\DataHandler.cs" />
     <Compile Include="Manager\EmployeeManager.cs" />
+    <Compile Include="Manager\TaskManager.cs" />
     <Compile Include="Manager\VersionManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Project Page\AddProject.cs">

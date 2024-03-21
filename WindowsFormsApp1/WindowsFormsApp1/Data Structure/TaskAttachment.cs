@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
-    public class Attachment
+    public class TaskAttachment
     {
+        public int TaskAttachmentID { get; set; }
         public int TaskID { get; set; }
-        public string AttachmentName { get; set; }
-        public string AttachmentLocation { get; set; }
+        public string TaskAttachmentName { get; set; }
+        public string TaskAttachmentLocation { get; set; }
     }
 }
