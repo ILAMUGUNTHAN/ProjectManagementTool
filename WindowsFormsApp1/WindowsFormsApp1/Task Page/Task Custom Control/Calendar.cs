@@ -15,7 +15,9 @@ namespace WindowsFormsApp1
 {
     public partial class Calendar : Form
     {
-        public Task CalendarTask { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+
         public Calendar()
         {
             InitializeComponent();
@@ -35,6 +37,8 @@ namespace WindowsFormsApp1
             }
             b1 = new SolidBrush(Color.FromArgb(201, 210, 217));
             startDateText.BackColor = Color.FromArgb(201, 210, 217);
+            isStartHighlighted = true;
+            isEndHighlighted = false;
             this.Invalidate();
         }
 
@@ -56,6 +60,8 @@ namespace WindowsFormsApp1
             }
             b2 = new SolidBrush(Color.FromArgb(201, 210, 217));
             endDateText.BackColor = Color.FromArgb(201, 210, 217);
+            isStartHighlighted = false;
+            isEndHighlighted = true;
             this.Invalidate();
         }
 
@@ -117,6 +123,7 @@ namespace WindowsFormsApp1
             g.SmoothingMode = SmoothingMode.AntiAlias;
             g.FillRoundedRectangle(brush, 0, 0, width, height, 10);
         }
+
         private void OnTablePanelPaint5(object sender, PaintEventArgs e)
         {
             int width = (sender as TableLayoutPanel).Width;
@@ -153,20 +160,11 @@ namespace WindowsFormsApp1
 
         private void SetTaskDate()
         {
-            if(CalendarTask==null)
-            {
-                currentMonth = DateTime.Today.Month;
-                currentYear = DateTime.Today.Year;
-                newDate = new DateTime(currentYear, currentMonth, 1);
-                startCol = (int)newDate.DayOfWeek;
-            }
-            else
-            {
-                currentMonth = CalendarTask.StartDate.Month;
-                currentYear = CalendarTask.StartDate.Year;
-                newDate = new DateTime(currentYear, currentMonth, 1);
-                startCol = (int)newDate.DayOfWeek;
-            }
+
+            currentMonth = StartDate.Month;
+            currentYear = StartDate.Year;
+            newDate = new DateTime(currentYear, currentMonth, 1);
+            startCol = (int)newDate.DayOfWeek;
 
             MonthDetails = new List<string>()
             {
@@ -177,7 +175,7 @@ namespace WindowsFormsApp1
 
         private void SetTablePanel()
         {
-            if (currentMonth-1 == 2 && currentYear % 4 == 0)
+            if (currentMonth - 1 == 2 && currentYear % 4 == 0)
             {
                 dayCounter = 29;
             }
@@ -187,30 +185,30 @@ namespace WindowsFormsApp1
                 dayCounter = 28;
             }
 
-            if (currentMonth - 1 == 1 || currentMonth - 1 == 3 || currentMonth - 1 == 5 || currentMonth - 1 == 7 || currentMonth - 1 == 8 || currentMonth - 1 == 10 || currentMonth - 1 == 0) 
+            if (currentMonth - 1 == 1 || currentMonth - 1 == 3 || currentMonth - 1 == 5 || currentMonth - 1 == 7 || currentMonth - 1 == 8 || currentMonth - 1 == 10 || currentMonth - 1 == 0)
             {
                 dayCounter = 31;
             }
 
-            if (currentMonth - 1 == 4 || currentMonth - 1 == 6 || currentMonth - 1 == 9 || currentMonth - 1 == 11) 
+            if (currentMonth - 1 == 4 || currentMonth - 1 == 6 || currentMonth - 1 == 9 || currentMonth - 1 == 11)
             {
                 dayCounter = 30;
             }
 
-            for (int ctr=startCol-1;ctr>=0; ctr--)
+            for (int ctr = startCol - 1; ctr >= 0; ctr--)
             {
                 dayTablePanel.GetControlFromPosition(ctr, 0).Text = dayCounter.ToString();
                 dayCounter--;
             }
 
             dayCounter = 1;
-            for(int row=0; row<6; row++)
+            for (int row = 0; row < 6; row++)
             {
-                for(int col = startCol; col<7; col++)
+                for (int col = startCol; col < 7; col++)
                 {
                     dayTablePanel.GetControlFromPosition(col, row).Text = dayCounter.ToString();
 
-                    if(dayCounter == DateTime.Today.Day && currentMonth == DateTime.Today.Month && currentYear == DateTime.Today.Year)
+                    if (dayCounter == DateTime.Today.Day && currentMonth == DateTime.Today.Month && currentYear == DateTime.Today.Year)
                     {
                         (dayTablePanel.GetControlFromPosition(col, row) as RoundedLabel).IsHighlighted = true;
                     }
@@ -218,6 +216,7 @@ namespace WindowsFormsApp1
                     {
                         (dayTablePanel.GetControlFromPosition(col, row) as RoundedLabel).IsHighlighted = false;
                     }
+
                     dayTablePanel.GetControlFromPosition(col, row).Invalidate();
                     dayCounter++;
                     ResetDayCounter();
@@ -234,7 +233,7 @@ namespace WindowsFormsApp1
                 dayCounter = 1;
             }
 
-            if((currentMonth == 1 || currentMonth == 3 || currentMonth==5 || currentMonth==7 ||currentMonth==8 ||currentMonth==10 || currentMonth == 12) && (dayCounter==32))
+            if ((currentMonth == 1 || currentMonth == 3 || currentMonth == 5 || currentMonth == 7 || currentMonth == 8 || currentMonth == 10 || currentMonth == 12) && (dayCounter == 32))
             {
                 dayCounter = 1;
             }
@@ -246,6 +245,7 @@ namespace WindowsFormsApp1
         }
 
         int currentMonth = 0, currentYear = 0, startCol = 0, dayCounter = 1;
+
         private void OnForwardMonthClick(object sender, EventArgs e)
         {
             if (currentMonth == 12)
@@ -265,22 +265,79 @@ namespace WindowsFormsApp1
 
         private void OnDayClicked(object sender, EventArgs e)
         {
-            if (!isStartHighlighted)
+            if (isStartHighlighted)
             {
-                //CalendarTask.StartDate = new DateTime(currentYear, currentMonth, Convert.ToInt32((sender as RoundedLabel).Text));
+                StartDate = new DateTime(currentYear, currentMonth, Convert.ToInt32((sender as RoundedLabel).Text));
+
+                if (EndDate < StartDate)
+                {
+                    if (prevEndLabel != null)
+                    {
+                        prevEndLabel.BackColor = prevEndLabel.NormalColor;
+                        prevEndLabel.ForeColor = prevEndLabel.ClickColor;
+                        prevEndLabel.IsClicked = false;
+                        prevEndLabel.ClickCount++;
+                    }
+                    EndDate = new DateTime(currentYear, currentMonth, Convert.ToInt32((sender as RoundedLabel).Text));
+                    endDateText.Text = (sender as RoundedLabel).Text + "/" + currentMonth + "/" + currentYear;
+                    prevEndLabel = sender as RoundedLabel;
+                }
+
+                if (prevStartLabel != null)
+                {
+                    prevStartLabel.BackColor = prevStartLabel.NormalColor;
+                    prevStartLabel.ForeColor = prevStartLabel.ClickColor;
+                    prevStartLabel.ClickCount++;
+                    prevStartLabel.IsClicked = false;
+                }
                 startDateText.Text = (sender as RoundedLabel).Text + "/" + currentMonth + "/" + currentYear;
-                isStartHighlighted = true;
+                prevStartLabel = sender as RoundedLabel;
             }
-            else if (!isEndHighlighted)
+            else
             {
+                EndDate = new DateTime(currentYear, currentMonth, Convert.ToInt32((sender as RoundedLabel).Text));
+
+                if (EndDate < StartDate)
+                {
+                    if (prevStartLabel != null)
+                    {
+                        prevStartLabel.BackColor = prevStartLabel.NormalColor;
+                        prevStartLabel.ForeColor = prevStartLabel.ClickColor;
+                        prevStartLabel.IsClicked = false;
+                        prevStartLabel.ClickCount++;
+                    }
+                    StartDate = new DateTime(currentYear, currentMonth, Convert.ToInt32((sender as RoundedLabel).Text));
+                    startDateText.Text = (sender as RoundedLabel).Text + "/" + currentMonth + "/" + currentYear;
+                    prevStartLabel = sender as RoundedLabel;
+                }
+
+                if (prevEndLabel != null)
+                {
+                    prevEndLabel.BackColor = prevStartLabel.NormalColor;
+                    prevEndLabel.ForeColor = prevStartLabel.ClickColor;
+                    prevEndLabel.ClickCount++;
+                    prevEndLabel.IsClicked = false;
+                }
                 endDateText.Text = (sender as RoundedLabel).Text + "/" + currentMonth + "/" + currentYear;
-                isEndHighlighted = true;
+                prevEndLabel = sender as RoundedLabel;
+            }
+
+            if (prevEndLabel != null)
+            {
+                prevEndLabel.BackColor = (sender as RoundedLabel).ClickColor;
+                prevEndLabel.ForeColor = (sender as RoundedLabel).NormalColor;
+            }
+
+            if (prevStartLabel != null)
+            {
+                prevStartLabel.BackColor = (sender as RoundedLabel).ClickColor;
+                prevStartLabel.ForeColor = (sender as RoundedLabel).NormalColor;
             }
         }
 
         private void OnMonthBackwardClick(object sender, EventArgs e)
         {
-            if(currentMonth == 1)
+            if (currentMonth == 1)
             {
                 currentMonth = 12;
                 currentYear--;
@@ -295,8 +352,9 @@ namespace WindowsFormsApp1
             SetTablePanel();
         }
 
-        
-        private bool isStartHighlighted, isEndHighlighted;
+
+        private bool isStartHighlighted = true, isEndHighlighted = true;
+        private RoundedLabel prevStartLabel = null, prevEndLabel = null;
         List<string> MonthDetails;
         DateTime newDate;
     }

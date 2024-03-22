@@ -26,7 +26,12 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            Calendar c = new Calendar();
+            c.StartDate = DateTime.Today;
+            c.EndDate = DateTime.Today;
+            c.Show();
         }
+
+
     }
 }

@@ -97,7 +97,7 @@ namespace WindowsFormsApp1
             ClickCount++;
         }
 
-        private bool IsClicked = false, isHighlighted = false;
-        private int ClickCount = 0;
+        public bool IsClicked = false, isHighlighted = false;
+        public int ClickCount = 0;
     }
 }
