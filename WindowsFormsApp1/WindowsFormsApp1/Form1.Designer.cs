@@ -28,24 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.addProject1 = new WindowsFormsApp1.AddProject();
+            this.ucBarChart1 = new WindowsFormsApp1.BarChart.UCBarChart();
             this.SuspendLayout();
             // 
-            // addProject1
+            // ucBarChart1
             // 
-            this.addProject1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.addProject1.Location = new System.Drawing.Point(0, 0);
-            this.addProject1.Margin = new System.Windows.Forms.Padding(1);
-            this.addProject1.Name = "addProject1";
-            this.addProject1.Size = new System.Drawing.Size(464, 357);
-            this.addProject1.TabIndex = 0;
+            this.ucBarChart1.BarColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.ucBarChart1.EmpDetails = null;
+            this.ucBarChart1.Location = new System.Drawing.Point(138, 34);
+            this.ucBarChart1.Name = "ucBarChart1";
+            this.ucBarChart1.Size = new System.Drawing.Size(753, 450);
+            this.ucBarChart1.StatusValues = new int[] {
+        0,
+        32,
+        44,
+        22};
+            this.ucBarChart1.TabIndex = 0;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1110, 618);
-            this.Controls.Add(this.addProject1);
+            this.Controls.Add(this.ucBarChart1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -55,7 +60,7 @@
 
         #endregion
 
-        private AddProject addProject1;
+        private BarChart.UCBarChart ucBarChart1;
     }
 }
 
