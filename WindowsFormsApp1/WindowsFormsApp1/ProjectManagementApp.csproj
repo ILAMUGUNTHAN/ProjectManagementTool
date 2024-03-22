@@ -70,6 +70,7 @@
     <Compile Include="Data Structure\SourceCode.cs" />
     <Compile Include="Data Structure\Task.cs" />
     <Compile Include="Data Structure\VersionAttachment.cs" />
+    <Compile Include="Data Structure\VersionSourceCode.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

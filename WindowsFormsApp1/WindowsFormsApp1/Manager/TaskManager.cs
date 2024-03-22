@@ -8,6 +8,20 @@ namespace WindowsFormsApp1
 {
     static class TaskManager
     {
+        //Submit Task
+        public static void SubmitTask(Task task, List<SourceCode> sourceCodeCollection)
+        {
+            task.StatusOfTask = TaskStatus.UnderReview;
+
+            DataHandler.AddSourceCode(sourceCodeCollection);
+        }
+
+        //Move to Done Status
+        public static void MoveToDone(Task task)
+        {
+            task.StatusOfTask = TaskStatus.Done;
+        }
+
         //Created a new Task
         public static void AddTask(string taskName, string taskDescription, DateTime startDate, DateTime endDate, Priority priority, int assignedTo, List<TaskAttachment> taskAttachments)
         {
@@ -47,17 +61,9 @@ namespace WindowsFormsApp1
         }
 
         //Change Status of Task
-        public static void ChangeTaskStatus(int taskID, TaskStatus status)
+        public static void ChangeTaskStatus(Task task, TaskStatus status)
         {
-            foreach(var Iter in TaskCollection)
-            {
-                if(Iter.TaskID == taskID)
-                {
-                    Iter.StatusOfTask = status;
-                    DataHandler.UpdateTask(Iter);
-                    return;
-                }
-            }
+            task.StatusOfTask = status;
         }
 
         //Fetches Task Class by Selected Version ID For Project
@@ -77,12 +83,30 @@ namespace WindowsFormsApp1
             return result;
         }
 
-        //Checks Whether Selected Date is Between Currently Working Version Project's Date Or Not
+        //Checks Whether Selected Date is Between Currently Working Version Project's Date Or Not || Is From Today
         public static bool CheckTaskDate(DateTime start, DateTime end)
         {
             if (VersionManager.CurrentVersion.StartDate<=start && VersionManager.CurrentVersion.StartDate <= end && start <= VersionManager.CurrentVersion.EndDate && end <= VersionManager.CurrentVersion.EndDate)
-                return true;
+            {
+                if(start >= DateTime.Today.Date)
+                {
+                    return true;
+                }
+            }
             return false;
+        }
+
+        //Checks and Notify Every Active Version's Task Deadline
+        public static void CheckTaskDeadline()
+        {
+            List<int> activeVersion = VersionManager.ActiveVersionID();
+            foreach(var Iter in TaskCollection)
+            {
+                if(activeVersion.Contains(Iter.VersionID) && Iter.EndDate > DateTime.Today)
+                {
+                    DataHandler.AddNotify("Task Deadline", Iter.TaskName + Iter.EndDate.ToShortDateString(), Iter.AssignedBy);
+                }
+            }
         }
 
         public static List<Task> TaskCollection;

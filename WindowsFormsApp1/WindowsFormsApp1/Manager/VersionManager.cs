@@ -30,7 +30,7 @@ namespace WindowsFormsApp1
                 StartDate = startDate,
                 EndDate = endDate,
                 ProjectID = newProject.ProjectID,
-                StatusOfVersion = (DateTime.Today.Day == startDate.Day && DateTime.Today.Month == startDate.Month && DateTime.Today.Year == startDate.Year) ? ProjectStatus.OnProcess : ProjectStatus.Upcoming
+                StatusOfVersion = (DateTime.Today.Day == startDate.Day && DateTime.Today.Month == startDate.Month && DateTime.Today.Year == startDate.Year) ? ProjectStatus.OnProcess : ProjectStatus.UpComing
             };
 
             newVersion = DataHandler.AddVersion(newVersion);
@@ -51,7 +51,7 @@ namespace WindowsFormsApp1
                 StartDate = startDate,
                 EndDate = endDate,
                 ProjectID = projectID,
-                StatusOfVersion = (DateTime.Today.Day == startDate.Day && DateTime.Today.Month == startDate.Month && DateTime.Today.Year == startDate.Year) ? ProjectStatus.OnProcess : ProjectStatus.Upcoming
+                StatusOfVersion = (DateTime.Today.Day == startDate.Day && DateTime.Today.Month == startDate.Month && DateTime.Today.Year == startDate.Year) ? ProjectStatus.OnProcess : ProjectStatus.UpComing
             };
 
             newVersion = DataHandler.AddVersion(newVersion);
@@ -77,6 +77,97 @@ namespace WindowsFormsApp1
                     return;
                 }
             }
+        }
+
+        public static void ChangeToCompleteVersionStatus(ProjectVersion version)
+        {
+            version.StatusOfVersion = ProjectStatus.Completed;
+        }
+
+        //Checks and Sets Project Version's Deadline on everyTick
+        public static void CheckVersionDeadline()
+        {
+            foreach(var Iter in VersionCollection)
+            {
+                if(Iter.StatusOfVersion == ProjectStatus.OnProcess && Iter.EndDate > DateTime.Today)
+                {
+                    DataHandler.AddNotify("Task Deadline", GetProjectName(Iter.ProjectID) + Iter.VersionName + Iter.EndDate.ToShortDateString(), GetManagerIDFromProjectID(Iter.ProjectID));
+                }
+            }
+        }
+
+        //Deploy Project Version
+        public static bool DeployProjectVersion(VersionSourceCode sourceCode)
+        {
+            if (CheckDeployCriteria())
+            {
+                CurrentVersion.StatusOfVersion = ProjectStatus.Deployment;
+                DataHandler.AddVersionSourceCode(sourceCode);
+            }
+            return false;
+        }
+
+        //Fetches On Process Version
+        public static List<int> ActiveVersionID()
+        {
+            List<int> result = new List<int>();
+            foreach(var Iter in VersionCollection)
+            {
+                if(Iter.StatusOfVersion == ProjectStatus.OnProcess)
+                {
+                    result.Add(Iter.VersionID);
+                }
+            }
+
+            return result;
+        }
+
+        //Fetches All Project That are only on Completed Status
+        public static List<Projects> FetchAllProjectsOnCompletedStatus()
+        {
+            List<Projects> result = new List<Projects>();
+            foreach(var Iter in ProjectCollection)
+            {
+                if(Iter.ManagerID == EmployeeManager.CurrentEmployee.EmployeeID && (IsProjectAvailableForVersionUpgrade(Iter.ProjectID)))
+                {
+                    result.Add(Iter);
+                }
+            }
+
+            return result;
+        }
+
+        //Checks and Sets Project Version's On Stage Status for every Tick
+        public static void CheckAndChangeVersionStatus()
+        {
+            foreach(var Iter in VersionCollection)
+            {
+                if(Iter.StatusOfVersion == ProjectStatus.UpComing && Iter.StartDate <= DateTime.Today)
+                {
+                    Iter.StatusOfVersion = ProjectStatus.OnStage;
+                }
+            }
+        }
+
+        //Fetchs On Stage Project Version for Logged In Team Leader
+        public static ProjectVersion FetchOnStageVersion(int teamLeadID) 
+        {
+            foreach(var Iter in VersionCollection)
+            {
+                if(Iter.StatusOfVersion == ProjectStatus.OnStage && FetchTeamLeadIDFromProjectID(Iter.ProjectID) == teamLeadID)
+                {
+                    return Iter;
+                }
+            }
+
+            return null;
+        }
+         
+        //Changes On Stage Version Status to On Process Status
+        public static void StartProject(ProjectVersion version)
+        {
+            version.StatusOfVersion = ProjectStatus.OnProcess;
+            CurrentVersion = version;
         }
 
         //Sets Current On Process Project Version for Logged In Employee
@@ -152,7 +243,7 @@ namespace WindowsFormsApp1
         }
 
         //Checks if Project Name is Already Available
-        public static bool CanAddProject(string projectName)
+        public static bool IsProjectNameAlreadyExist(string projectName)
         {
             foreach(var Iter in ProjectCollection)
             {
@@ -166,7 +257,7 @@ namespace WindowsFormsApp1
         }
 
         //Checks if Version Name is Already Available for the Project
-        public static bool CanAddVersion(string versionName, int projectID)
+        public static bool IsVersionNameAlreadyExist(string versionName, int projectID)
         {
             foreach(var Iter in VersionCollection)
             {
@@ -209,6 +300,16 @@ namespace WindowsFormsApp1
             return teamIDs;
         }
 
+        //Checks Created Version Date is starts after tomorrow
+        public static bool CheckDate(DateTime start, DateTime end)
+        {
+            if (start > DateTime.Today)
+            {
+                return true;
+            }
+            return false;
+        }
+
         //Gets Team Leaders ID from Project ID
         public static int FetchTeamLeadIDFromProjectID(int projectID)
         {
@@ -221,6 +322,55 @@ namespace WindowsFormsApp1
             }
 
             return -1;
+        }
+
+        private static bool IsProjectAvailableForVersionUpgrade(int projectID)
+        {
+            foreach(var Iter in VersionCollection)
+            {
+                if(Iter.ProjectID == projectID && ((Iter.StatusOfVersion == ProjectStatus.OnProcess) || (Iter.StatusOfVersion == ProjectStatus.UpComing) || (Iter.StatusOfVersion == ProjectStatus.OnStage)))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private static bool CheckDeployCriteria()
+        {
+            foreach (var Iter in TaskManager.TaskCollection)
+            {
+                if(Iter.VersionID == CurrentVersion.VersionID && Iter.StatusOfTask != TaskStatus.Done)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private static int GetManagerIDFromProjectID(int projectID)
+        {
+            foreach(var Iter in ProjectCollection)
+            {
+                if(Iter.ProjectID == projectID)
+                {
+                    return Iter.ManagerID;
+                }
+            }
+            return -1;
+        }
+
+        private static string GetProjectName(int projectID)
+        {
+            foreach(var Iter in ProjectCollection)
+            {
+                if(Iter.ProjectID == projectID)
+                {
+                    return Iter.ProjectName;
+                }
+            }
+
+            return "";
         }
 
         public static List<Projects> ProjectCollection;
