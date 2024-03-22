@@ -15,12 +15,12 @@ namespace WindowsFormsApp1
         public Form1()
         {
             InitializeComponent();
-            DataHandler.ConnectDatabase();
-            DataHandler.StoreEmployeeDetails();
-            DataHandler.StoreEmployeeManagingDetails();
-            DataHandler.StoreProjectDetails();
-            DataHandler.StoreProjectVersionDetails();
-            EmployeeManager.LogInEmployee("paulrobin98@gmail.com", "Lucid123");
+            //DataHandler.ConnectDatabase();
+            //DataHandler.StoreEmployeeDetails();
+            //DataHandler.StoreEmployeeManagingDetails();
+            //DataHandler.StoreProjectDetails();
+            //DataHandler.StoreProjectVersionDetails();
+            //EmployeeManager.LogInEmployee("paulrobin98@gmail.com", "Lucid123");
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -98,6 +98,30 @@
     <Compile Include="Manager\EmployeeManager.cs" />
     <Compile Include="Manager\TaskManager.cs" />
     <Compile Include="Manager\VersionManager.cs" />
+    <Compile Include="My Issue Page\PriorityDropDownForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Issue Page\PriorityDropDownForm.Designer.cs">
+      <DependentUpon>PriorityDropDownForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="My Issue Page\TypeDropDownForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Issue Page\TypeDropDownForm.Designer.cs">
+      <DependentUpon>TypeDropDownForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="My Issue Page\UCCreateIssue.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="My Issue Page\UCCreateIssue.Designer.cs">
+      <DependentUpon>UCCreateIssue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="My Issue Page\UCTags.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="My Issue Page\UCTags.Designer.cs">
+      <DependentUpon>UCTags.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Project Page\AddProject.cs">
       <SubType>UserControl</SubType>
@@ -137,6 +161,18 @@
     <EmbeddedResource Include="Main Form\ProfilePicAndName.resx">
       <DependentUpon>ProfilePicAndName.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="My Issue Page\PriorityDropDownForm.resx">
+      <DependentUpon>PriorityDropDownForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Issue Page\TypeDropDownForm.resx">
+      <DependentUpon>TypeDropDownForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Issue Page\UCCreateIssue.resx">
+      <DependentUpon>UCCreateIssue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Issue Page\UCTags.resx">
+      <DependentUpon>UCTags.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Project Page\AddProject.resx">
       <DependentUpon>AddProject.cs</DependentUpon>
     </EmbeddedResource>
@@ -172,7 +208,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Images\close red.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Images\Notify Off.png" />
   </ItemGroup>
@@ -202,6 +240,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Images\Ticket Normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Close.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
