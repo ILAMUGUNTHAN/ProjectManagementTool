@@ -10,7 +10,6 @@ namespace WindowsFormsApp1
     {
         public int ProjectID { get; set; }
         public string ProjectName { get; set; }
-        public string ProjectDesc { get; set; }
         public int ManagerID { get; set; }
         public int TeamLeadID { get; set; }
     }

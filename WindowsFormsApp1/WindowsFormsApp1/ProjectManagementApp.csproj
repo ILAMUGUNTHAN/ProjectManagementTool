@@ -35,26 +35,22 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DatabaseLibrary">
-      <HintPath>..\..\..\..\..\Desktop\Components\DatabaseLibrary.dll</HintPath>
+      <HintPath>..\..\..\..\..\Documents\IPMsg\AutoSave\Components\DatabaseLibrary.dll</HintPath>
     </Reference>
     <Reference Include="GoLibrary">
-      <HintPath>..\..\..\..\..\Desktop\Components\GoLibrary.dll</HintPath>
+      <HintPath>..\..\..\..\..\Documents\IPMsg\AutoSave\Components\GoLibrary.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\MySQL\MySQL Installer for Windows\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="MySqlBackup">
-      <HintPath>..\..\..\..\..\Desktop\Components\MySqlBackup.dll</HintPath>
+      <HintPath>..\..\..\..\..\Documents\IPMsg\AutoSave\Components\MySqlBackup.dll</HintPath>
     </Reference>
     <Reference Include="MySQLDatabase">
-      <HintPath>..\..\..\..\..\Desktop\Components\MySQLDatabase.dll</HintPath>
+      <HintPath>..\..\..\..\..\Documents\IPMsg\AutoSave\Components\MySQLDatabase.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.SQLite">
-      <HintPath>..\..\..\..\..\Desktop\Components\System.Data.SQLite.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -66,61 +62,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BarChart\UCBarChart.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="BarChart\UCBarChart.Designer.cs">
-      <DependentUpon>UCBarChart.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BoardView\UCCompletedStatus.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="BoardView\UCCompletedStatus.Designer.cs">
-      <DependentUpon>UCCompletedStatus.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BoardView\UCInprogressStatus.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="BoardView\UCInprogressStatus.Designer.cs">
-      <DependentUpon>UCInprogressStatus.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BoardView\UCTaskBoard.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="BoardView\UCTaskBoard.Designer.cs">
-      <DependentUpon>UCTaskBoard.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BoardView\UCToDoStatus.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="BoardView\UCToDoStatus.Designer.cs">
-      <DependentUpon>UCToDoStatus.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Create Project\UCRoundedTextBox.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Create Project\UCRoundedTextBox.Designer.cs">
-      <DependentUpon>UCRoundedTextBox.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Create Project\UCCreateProject.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Create Project\UCCreateProject.Designer.cs">
-      <DependentUpon>UCCreateProject.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Create Project\UCNewProject.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Create Project\UCNewProject.Designer.cs">
-      <DependentUpon>UCNewProject.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Data Structure\Attachment.cs" />
+    <Compile Include="Data Structure\TaskAttachment.cs" />
     <Compile Include="Data Structure\Employee.cs" />
     <Compile Include="Data Structure\ManagingEmployee.cs" />
     <Compile Include="Data Structure\Projects.cs" />
     <Compile Include="Data Structure\ProjectVersion.cs" />
     <Compile Include="Data Structure\SourceCode.cs" />
     <Compile Include="Data Structure\Task.cs" />
+    <Compile Include="Data Structure\VersionAttachment.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,6 +96,7 @@
     </Compile>
     <Compile Include="Manager\DataHandler.cs" />
     <Compile Include="Manager\EmployeeManager.cs" />
+    <Compile Include="Manager\TaskManager.cs" />
     <Compile Include="Manager\VersionManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Project Page\AddProject.cs">
@@ -178,36 +128,6 @@
     <Compile Include="Task Page\Task Custom Control\RoundedLabel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="View Project\ProjectBoard.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="View Project\ProjectBoard.Designer.cs">
-      <DependentUpon>ProjectBoard.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="BarChart\UCBarChart.resx">
-      <DependentUpon>UCBarChart.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BoardView\UCCompletedStatus.resx">
-      <DependentUpon>UCCompletedStatus.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BoardView\UCInprogressStatus.resx">
-      <DependentUpon>UCInprogressStatus.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BoardView\UCTaskBoard.resx">
-      <DependentUpon>UCTaskBoard.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BoardView\UCToDoStatus.resx">
-      <DependentUpon>UCToDoStatus.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Create Project\UCRoundedTextBox.resx">
-      <DependentUpon>UCRoundedTextBox.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Create Project\UCCreateProject.resx">
-      <DependentUpon>UCCreateProject.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Create Project\UCNewProject.resx">
-      <DependentUpon>UCNewProject.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -239,9 +159,6 @@
     <EmbeddedResource Include="Task Page\Task Custom Control\Calendar.resx">
       <DependentUpon>Calendar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View Project\ProjectBoard.resx">
-      <DependentUpon>ProjectBoard.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -255,9 +172,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Images\Notify Off.png" />
   </ItemGroup>
