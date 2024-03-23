@@ -118,6 +118,12 @@
     <Compile Include="Project Page\InitializePage.Designer.cs">
       <DependentUpon>InitializePage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Project Page\TeamLeaderPicAndName.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Project Page\TeamLeaderPicAndName.Designer.cs">
+      <DependentUpon>TeamLeaderPicAndName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Task Page\Task Custom Control\Calendar.cs">
       <SubType>Form</SubType>
@@ -146,6 +152,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Project Page\InitializePage.resx">
       <DependentUpon>InitializePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Project Page\TeamLeaderPicAndName.resx">
+      <DependentUpon>TeamLeaderPicAndName.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

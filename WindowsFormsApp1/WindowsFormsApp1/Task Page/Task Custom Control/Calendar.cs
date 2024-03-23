@@ -208,6 +208,7 @@ namespace WindowsFormsApp1
                 {
                     dayTablePanel.GetControlFromPosition(col, row).Text = dayCounter.ToString();
 
+
                     if (dayCounter == DateTime.Today.Day && currentMonth == DateTime.Today.Month && currentYear == DateTime.Today.Year)
                     {
                         (dayTablePanel.GetControlFromPosition(col, row) as RoundedLabel).IsHighlighted = true;
@@ -265,73 +266,17 @@ namespace WindowsFormsApp1
 
         private void OnDayClicked(object sender, EventArgs e)
         {
+            CheckPrevOrNextMonth(sender as RoundedLabel);
             if (isStartHighlighted)
             {
-                StartDate = new DateTime(currentYear, currentMonth, Convert.ToInt32((sender as RoundedLabel).Text));
-
-                if (EndDate < StartDate)
+                if (StartDate > EndDate)
                 {
-                    if (prevEndLabel != null)
-                    {
-                        prevEndLabel.BackColor = prevEndLabel.NormalColor;
-                        prevEndLabel.ForeColor = prevEndLabel.ClickColor;
-                        prevEndLabel.IsClicked = false;
-                        prevEndLabel.ClickCount++;
-                    }
-                    EndDate = new DateTime(currentYear, currentMonth, Convert.ToInt32((sender as RoundedLabel).Text));
-                    endDateText.Text = (sender as RoundedLabel).Text + "/" + currentMonth + "/" + currentYear;
-                    prevEndLabel = sender as RoundedLabel;
+                    EndDate = new DateTime(currentYear, currentMonth, day);
                 }
-
-                if (prevStartLabel != null)
-                {
-                    prevStartLabel.BackColor = prevStartLabel.NormalColor;
-                    prevStartLabel.ForeColor = prevStartLabel.ClickColor;
-                    prevStartLabel.ClickCount++;
-                    prevStartLabel.IsClicked = false;
-                }
-                startDateText.Text = (sender as RoundedLabel).Text + "/" + currentMonth + "/" + currentYear;
-                prevStartLabel = sender as RoundedLabel;
             }
             else
             {
-                EndDate = new DateTime(currentYear, currentMonth, Convert.ToInt32((sender as RoundedLabel).Text));
 
-                if (EndDate < StartDate)
-                {
-                    if (prevStartLabel != null)
-                    {
-                        prevStartLabel.BackColor = prevStartLabel.NormalColor;
-                        prevStartLabel.ForeColor = prevStartLabel.ClickColor;
-                        prevStartLabel.IsClicked = false;
-                        prevStartLabel.ClickCount++;
-                    }
-                    StartDate = new DateTime(currentYear, currentMonth, Convert.ToInt32((sender as RoundedLabel).Text));
-                    startDateText.Text = (sender as RoundedLabel).Text + "/" + currentMonth + "/" + currentYear;
-                    prevStartLabel = sender as RoundedLabel;
-                }
-
-                if (prevEndLabel != null)
-                {
-                    prevEndLabel.BackColor = prevStartLabel.NormalColor;
-                    prevEndLabel.ForeColor = prevStartLabel.ClickColor;
-                    prevEndLabel.ClickCount++;
-                    prevEndLabel.IsClicked = false;
-                }
-                endDateText.Text = (sender as RoundedLabel).Text + "/" + currentMonth + "/" + currentYear;
-                prevEndLabel = sender as RoundedLabel;
-            }
-
-            if (prevEndLabel != null)
-            {
-                prevEndLabel.BackColor = (sender as RoundedLabel).ClickColor;
-                prevEndLabel.ForeColor = (sender as RoundedLabel).NormalColor;
-            }
-
-            if (prevStartLabel != null)
-            {
-                prevStartLabel.BackColor = (sender as RoundedLabel).ClickColor;
-                prevStartLabel.ForeColor = (sender as RoundedLabel).NormalColor;
             }
         }
 
@@ -352,8 +297,26 @@ namespace WindowsFormsApp1
             SetTablePanel();
         }
 
+        private void CheckPrevOrNextMonth(RoundedLabel label)
+        {
+            day = Convert.ToInt32(label.Text);
+            int row = dayTablePanel.GetPositionFromControl(label).Row;
 
+            if (row == 0 && day > 20) 
+            {
+                Flag = true; 
+                OnMonthBackwardClick(label, new EventArgs());
+            }
+            if (row == 6 && day < 8)
+            {
+                Flag = true;
+                OnForwardMonthClick(label, new EventArgs());
+            }
+        }
+
+        private bool Flag = false;
         private bool isStartHighlighted = true, isEndHighlighted = true;
+        private int day;
         private RoundedLabel prevStartLabel = null, prevEndLabel = null;
         List<string> MonthDetails;
         DateTime newDate;
