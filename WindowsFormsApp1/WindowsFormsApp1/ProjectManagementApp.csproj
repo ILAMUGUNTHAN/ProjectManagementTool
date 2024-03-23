@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>WindowsFormsApp1</RootNamespace>
     <AssemblyName>WindowsFormsApp1</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -35,22 +35,25 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DatabaseLibrary">
-      <HintPath>..\..\..\..\..\Documents\IPMsg\AutoSave\Components\DatabaseLibrary.dll</HintPath>
+      <HintPath>..\..\..\..\..\Downloads\DatabaseLibrary.dll</HintPath>
     </Reference>
     <Reference Include="GoLibrary">
-      <HintPath>..\..\..\..\..\Documents\IPMsg\AutoSave\Components\GoLibrary.dll</HintPath>
+      <HintPath>..\..\..\..\..\Downloads\GoLibrary.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data">
-      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\MySQL\MySQL Installer for Windows\MySql.Data.dll</HintPath>
+      <HintPath>..\..\..\..\..\Downloads\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="MySqlBackup">
-      <HintPath>..\..\..\..\..\Documents\IPMsg\AutoSave\Components\MySqlBackup.dll</HintPath>
+      <HintPath>..\..\..\..\..\Downloads\MySqlBackup.dll</HintPath>
     </Reference>
     <Reference Include="MySQLDatabase">
-      <HintPath>..\..\..\..\..\Documents\IPMsg\AutoSave\Components\MySQLDatabase.dll</HintPath>
+      <HintPath>..\..\..\..\..\Downloads\MySQLDatabase.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\..\..\..\..\Downloads\System.Data.SQLite.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -106,6 +109,12 @@
     <Compile Include="Project Page\AddProject.Designer.cs">
       <DependentUpon>AddProject.cs</DependentUpon>
     </Compile>
+    <Compile Include="Project Page\Attachment.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Project Page\Attachment.Designer.cs">
+      <DependentUpon>Attachment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Project Page\AvailableTeamLeaders.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -117,6 +126,18 @@
     </Compile>
     <Compile Include="Project Page\InitializePage.Designer.cs">
       <DependentUpon>InitializePage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Project Page\NoResultFound.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Project Page\NoResultFound.Designer.cs">
+      <DependentUpon>NoResultFound.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Project Page\SelectedTeamLeader.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Project Page\SelectedTeamLeader.Designer.cs">
+      <DependentUpon>SelectedTeamLeader.cs</DependentUpon>
     </Compile>
     <Compile Include="Project Page\TeamLeaderPicAndName.cs">
       <SubType>UserControl</SubType>
@@ -147,11 +168,20 @@
     <EmbeddedResource Include="Project Page\AddProject.resx">
       <DependentUpon>AddProject.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Project Page\Attachment.resx">
+      <DependentUpon>Attachment.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Project Page\AvailableTeamLeaders.resx">
       <DependentUpon>AvailableTeamLeaders.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Project Page\InitializePage.resx">
       <DependentUpon>InitializePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Project Page\NoResultFound.resx">
+      <DependentUpon>NoResultFound.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Project Page\SelectedTeamLeader.resx">
+      <DependentUpon>SelectedTeamLeader.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Project Page\TeamLeaderPicAndName.resx">
       <DependentUpon>TeamLeaderPicAndName.cs</DependentUpon>
@@ -182,7 +212,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Images\No Result.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Images\Notify Off.png" />
   </ItemGroup>

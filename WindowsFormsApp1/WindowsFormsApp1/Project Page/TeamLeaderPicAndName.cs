@@ -29,6 +29,9 @@ namespace WindowsFormsApp1
                 }
             }
         }
+
+        public delegate void EmployeeHandler(Employee employee);
+        public event EmployeeHandler TeamLeaderClick;
         public TeamLeaderPicAndName()
         {
             InitializeComponent();
@@ -38,7 +41,7 @@ namespace WindowsFormsApp1
 
         private void OnProfileClicked(object sender, EventArgs e)
         {
-
+            TeamLeaderClick?.Invoke(employee);
         }
     }
 }

@@ -56,5 +56,15 @@ namespace WindowsFormsApp1
         {
             ProjectEntryTablePanel.Invalidate();
         }
+
+        private void OnTeamLeaderClick(Employee employee)
+        {
+
+        }
+
+        private void selectedTeamLeader_OnChangeTeamLeader(object sender, EventArgs e)
+        {
+
+        }
     }
 }
