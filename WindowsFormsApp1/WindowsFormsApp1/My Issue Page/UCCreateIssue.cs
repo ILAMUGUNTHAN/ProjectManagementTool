@@ -55,8 +55,8 @@ namespace WindowsFormsApp1
         private void ProjectEntryTablePanel_Paint(object sender, PaintEventArgs e)
         {
             Pen pen = new Pen(Color.FromArgb(39, 55, 77));
-            e.Graphics.DrawLine(pen, new Point(10, projectTitleTextBox.Location.Y + projectTitleTextBox.Height + 1), new Point(ProjectEntryTablePanel.Width - 10, projectTitleTextBox.Location.Y + projectTitleTextBox.Height + 1));
-            e.Graphics.DrawLine(pen, new Point(10, projectDescTextBox.Location.Y + projectDescTextBox.Height + 1), new Point(ProjectEntryTablePanel.Width - 10, projectDescTextBox.Location.Y + projectDescTextBox.Height + 1));
+            e.Graphics.DrawLine(pen, new Point(10, IssueTitleTextBox.Location.Y + IssueTitleTextBox.Height + 1), new Point(ProjectEntryTablePanel.Width - 10, IssueTitleTextBox.Location.Y + IssueTitleTextBox.Height + 1));
+            e.Graphics.DrawLine(pen, new Point(10, IssueDescTextBox.Location.Y + IssueDescTextBox.Height + 1), new Point(ProjectEntryTablePanel.Width - 10, IssueDescTextBox.Location.Y + IssueDescTextBox.Height + 1));
             pen.Dispose();
         }
 
@@ -85,8 +85,6 @@ namespace WindowsFormsApp1
             PriorityForm.Size = new Size(PriorityBtn.Width-3, PriorityForm.Height);
 
             PriorityForm.Show();
-
-
 
         }
 
@@ -148,10 +146,17 @@ namespace WindowsFormsApp1
             textBoxTags.Text = "";
 
 
-
-
         }
 
-
+        private void OnClickTextBox(object sender, EventArgs e)
+        {
+            if(textBoxTags.Text == "") textBoxTags.Text = "Enter Tags";
+            if (IssueTitleTextBox.Text == "") IssueTitleTextBox.Text = "Enter Issue Name";
+            if (IssueDescTextBox.Text == "") IssueDescTextBox.Text = "Enter Your Text";
+            if ((sender as TextBox).Text == "Enter Tags"|| (sender as TextBox).Text== "Enter Issue Name" || (sender as TextBox).Text == "Enter Your Text")
+            {
+                (sender as TextBox).Text = "";
+            }
+        }
     }
 }

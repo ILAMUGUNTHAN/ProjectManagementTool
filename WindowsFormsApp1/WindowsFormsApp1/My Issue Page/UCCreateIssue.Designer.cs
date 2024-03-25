@@ -36,17 +36,17 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.textBoxTags = new System.Windows.Forms.TextBox();
             this.BtnAddTag = new System.Windows.Forms.Button();
+            this.panelTags = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.ProjectEntryTablePanel = new System.Windows.Forms.TableLayoutPanel();
-            this.projectDescTextBox = new System.Windows.Forms.TextBox();
+            this.IssueDescTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.projectTitleTextBox = new System.Windows.Forms.TextBox();
+            this.IssueTitleTextBox = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.BtnSetPriority = new System.Windows.Forms.Button();
             this.BtnSetType = new System.Windows.Forms.Button();
-            this.panelTags = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -73,9 +73,8 @@
             this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 13F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(568, 426);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
@@ -86,7 +85,7 @@
             this.panel4.Location = new System.Drawing.Point(7, 282);
             this.panel4.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(554, 115);
+            this.panel4.Size = new System.Drawing.Size(554, 94);
             this.panel4.TabIndex = 2;
             // 
             // tableLayoutPanel2
@@ -146,18 +145,24 @@
             this.tableLayoutPanel4.Padding = new System.Windows.Forms.Padding(5, 2, 5, 0);
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(214, 40);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // textBoxTags
             // 
+            this.textBoxTags.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
+            this.textBoxTags.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxTags.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxTags.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxTags.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.textBoxTags.Location = new System.Drawing.Point(8, 5);
             this.textBoxTags.Multiline = true;
             this.textBoxTags.Name = "textBoxTags";
             this.textBoxTags.Size = new System.Drawing.Size(116, 32);
             this.textBoxTags.TabIndex = 0;
+            this.textBoxTags.Text = "Enter Tags";
+            this.textBoxTags.Click += new System.EventHandler(this.OnClickTextBox);
             // 
             // BtnAddTag
             // 
@@ -172,6 +177,15 @@
             this.BtnAddTag.Text = "Add Tag";
             this.BtnAddTag.UseVisualStyleBackColor = true;
             this.BtnAddTag.Click += new System.EventHandler(this.OnClickAddTag);
+            // 
+            // panelTags
+            // 
+            this.panelTags.AutoScroll = true;
+            this.panelTags.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelTags.Location = new System.Drawing.Point(3, 43);
+            this.panelTags.Name = "panelTags";
+            this.panelTags.Size = new System.Drawing.Size(208, 155);
+            this.panelTags.TabIndex = 1;
             // 
             // panel1
             // 
@@ -189,10 +203,10 @@
             this.ProjectEntryTablePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
             this.ProjectEntryTablePanel.ColumnCount = 1;
             this.ProjectEntryTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.ProjectEntryTablePanel.Controls.Add(this.projectDescTextBox, 0, 3);
+            this.ProjectEntryTablePanel.Controls.Add(this.IssueDescTextBox, 0, 3);
             this.ProjectEntryTablePanel.Controls.Add(this.label1, 0, 0);
             this.ProjectEntryTablePanel.Controls.Add(this.label2, 0, 2);
-            this.ProjectEntryTablePanel.Controls.Add(this.projectTitleTextBox, 0, 1);
+            this.ProjectEntryTablePanel.Controls.Add(this.IssueTitleTextBox, 0, 1);
             this.ProjectEntryTablePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ProjectEntryTablePanel.Location = new System.Drawing.Point(0, 0);
             this.ProjectEntryTablePanel.Margin = new System.Windows.Forms.Padding(0);
@@ -205,20 +219,21 @@
             this.ProjectEntryTablePanel.Size = new System.Drawing.Size(326, 201);
             this.ProjectEntryTablePanel.TabIndex = 0;
             // 
-            // projectDescTextBox
+            // IssueDescTextBox
             // 
-            this.projectDescTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
-            this.projectDescTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.projectDescTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.projectDescTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.projectDescTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.projectDescTextBox.Location = new System.Drawing.Point(7, 90);
-            this.projectDescTextBox.Margin = new System.Windows.Forms.Padding(7, 6, 7, 13);
-            this.projectDescTextBox.Multiline = true;
-            this.projectDescTextBox.Name = "projectDescTextBox";
-            this.projectDescTextBox.Size = new System.Drawing.Size(312, 98);
-            this.projectDescTextBox.TabIndex = 3;
-            this.projectDescTextBox.Text = "Enter your Text...";
+            this.IssueDescTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
+            this.IssueDescTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.IssueDescTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.IssueDescTextBox.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IssueDescTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.IssueDescTextBox.Location = new System.Drawing.Point(7, 90);
+            this.IssueDescTextBox.Margin = new System.Windows.Forms.Padding(7, 6, 7, 13);
+            this.IssueDescTextBox.Multiline = true;
+            this.IssueDescTextBox.Name = "IssueDescTextBox";
+            this.IssueDescTextBox.Size = new System.Drawing.Size(312, 98);
+            this.IssueDescTextBox.TabIndex = 3;
+            this.IssueDescTextBox.Text = "Enter Your Text";
+            this.IssueDescTextBox.Click += new System.EventHandler(this.OnClickTextBox);
             // 
             // label1
             // 
@@ -246,20 +261,21 @@
             this.label2.Text = "Issue Description";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // projectTitleTextBox
+            // IssueTitleTextBox
             // 
-            this.projectTitleTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
-            this.projectTitleTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.projectTitleTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.projectTitleTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.projectTitleTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.projectTitleTextBox.Location = new System.Drawing.Point(7, 32);
-            this.projectTitleTextBox.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.projectTitleTextBox.Multiline = true;
-            this.projectTitleTextBox.Name = "projectTitleTextBox";
-            this.projectTitleTextBox.Size = new System.Drawing.Size(312, 20);
-            this.projectTitleTextBox.TabIndex = 2;
-            this.projectTitleTextBox.Text = "Issue Name";
+            this.IssueTitleTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
+            this.IssueTitleTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.IssueTitleTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.IssueTitleTextBox.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IssueTitleTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.IssueTitleTextBox.Location = new System.Drawing.Point(7, 32);
+            this.IssueTitleTextBox.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.IssueTitleTextBox.Multiline = true;
+            this.IssueTitleTextBox.Name = "IssueTitleTextBox";
+            this.IssueTitleTextBox.Size = new System.Drawing.Size(312, 20);
+            this.IssueTitleTextBox.TabIndex = 2;
+            this.IssueTitleTextBox.Text = "Enter Issue Name";
+            this.IssueTitleTextBox.Click += new System.EventHandler(this.OnClickTextBox);
             // 
             // panel3
             // 
@@ -315,15 +331,6 @@
             this.BtnSetType.UseVisualStyleBackColor = true;
             this.BtnSetType.Click += new System.EventHandler(this.OnClickSetType);
             // 
-            // panelTags
-            // 
-            this.panelTags.AutoScroll = true;
-            this.panelTags.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelTags.Location = new System.Drawing.Point(3, 43);
-            this.panelTags.Name = "panelTags";
-            this.panelTags.Size = new System.Drawing.Size(208, 155);
-            this.panelTags.TabIndex = 1;
-            // 
             // UCCreateIssue
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -354,10 +361,10 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TableLayoutPanel ProjectEntryTablePanel;
-        private System.Windows.Forms.TextBox projectDescTextBox;
+        private System.Windows.Forms.TextBox IssueDescTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox projectTitleTextBox;
+        private System.Windows.Forms.TextBox IssueTitleTextBox;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Button BtnSetPriority;
