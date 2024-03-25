@@ -35,7 +35,7 @@ namespace WindowsFormsApp1
 
             newVersion = DataHandler.AddVersion(newVersion);
 
-            DataHandler.AddVersionAttachments(versionAttachments);
+            DataHandler.AddVersionAttachments(versionAttachments, newVersion.VersionID);
 
             ProjectCollection.Add(newProject);
             VersionCollection.Add(newVersion);
@@ -56,7 +56,7 @@ namespace WindowsFormsApp1
 
             newVersion = DataHandler.AddVersion(newVersion);
 
-            DataHandler.AddVersionAttachments(versionAttachments);
+            DataHandler.AddVersionAttachments(versionAttachments, newVersion.VersionID);
 
             VersionCollection.Add(newVersion);
         }
@@ -249,11 +249,11 @@ namespace WindowsFormsApp1
             {
                 if(Iter.ProjectName == projectName)
                 {
-                    return false;
+                    return true;
                 }
             }
 
-            return true;
+            return false;
         }
 
         //Checks if Version Name is Already Available for the Project
@@ -290,7 +290,7 @@ namespace WindowsFormsApp1
             int teamID = -1;
             foreach(var Iter in VersionCollection)
             {
-                if(teamIDs.Contains(teamID = FetchTeamLeadIDFromProjectID(Iter.ProjectID)) && ((Iter.StartDate <= projectStartDate && projectStartDate <= Iter.EndDate) || (Iter.StartDate <= projectEndDate && projectEndDate <= Iter.EndDate)))
+                if(teamIDs.Contains(teamID = FetchTeamLeadIDFromProjectID(Iter.ProjectID)) && ((Iter.StartDate <= projectStartDate && projectStartDate <= Iter.EndDate) || (Iter.StartDate <= projectEndDate && projectEndDate <= Iter.EndDate) || (projectStartDate<=Iter.StartDate && Iter.EndDate<=projectEndDate)))
                 {
                     teamIDs.Remove(teamID);
                     teamID = -1;
@@ -300,10 +300,10 @@ namespace WindowsFormsApp1
             return teamIDs;
         }
 
-        //Checks Created Version Date is starts after tomorrow
+        //Checks Created Version Date is valid or not
         public static bool CheckDate(DateTime start, DateTime end)
         {
-            if (start > DateTime.Today)
+            if (start > DateTime.Today && start < end)
             {
                 return true;
             }

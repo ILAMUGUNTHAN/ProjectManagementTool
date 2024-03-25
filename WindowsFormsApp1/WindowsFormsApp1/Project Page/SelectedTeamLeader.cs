@@ -25,11 +25,11 @@ namespace WindowsFormsApp1.Project_Page
                 if(value!=null)
                 {
                     label2.Text = value.EmployeeFirstName;
-                    if(profilePictureBox1.Image != null)
+                    if(profilePictureBox.Image != null)
                     {
-                        profilePictureBox1.Image.Dispose();
+                        profilePictureBox.Image.Dispose();
                     }
-                    profilePictureBox1.Image = Image.FromFile(value.EmpProfileLocation);
+                    profilePictureBox.Image = Image.FromFile(value.EmpProfileLocation);
                 }
             }
         }
@@ -42,14 +42,14 @@ namespace WindowsFormsApp1.Project_Page
 
         private void OnResize(object sender, EventArgs e)
         {
-            int value = (Width - profilePictureBox1.Width) / 2;
-            panel4.Padding = new Padding(value, 0, value, 0);
+            int value = (Width - profilePictureBox.Width) / 2;
+            panel4.Padding = new Padding(value, 30, value, 0);
         }
 
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            int value = (Width - profilePictureBox1.Width) / 2;
+            int value = (Width - profilePictureBox.Width) / 2;
             panel4.Padding = new Padding(value, 0, value, 0);
         }
 

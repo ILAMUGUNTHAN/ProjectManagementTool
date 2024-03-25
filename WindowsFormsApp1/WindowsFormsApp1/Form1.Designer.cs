@@ -28,25 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.versionUpgrade1 = new WindowsFormsApp1.Project_Page.VersionUpgrade();
             this.SuspendLayout();
             // 
-            // button1
+            // versionUpgrade1
             // 
-            this.button1.Location = new System.Drawing.Point(143, 114);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.versionUpgrade1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.versionUpgrade1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.versionUpgrade1.Location = new System.Drawing.Point(0, 0);
+            this.versionUpgrade1.Name = "versionUpgrade1";
+            this.versionUpgrade1.Size = new System.Drawing.Size(1337, 784);
+            this.versionUpgrade1.TabIndex = 0;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(464, 357);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(1337, 784);
+            this.Controls.Add(this.versionUpgrade1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -56,7 +55,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private Project_Page.VersionUpgrade versionUpgrade1;
     }
 }
 

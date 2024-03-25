@@ -39,6 +39,7 @@ namespace WindowsFormsApp1
 
         private void InitializeProfiles()
         {
+            profilePanel.Controls.Clear();
             TeamLeaderPicAndName uc;
             foreach (var Iter in teamLeaders)
             {
@@ -46,6 +47,7 @@ namespace WindowsFormsApp1
                 uc.EmployeeProfile = Iter;
                 uc.Dock = DockStyle.Top;
                 uc.TeamLeaderClick += OnTeamLeaderClicked;
+                profilePanel.Controls.Add(uc);
             }
         }
 

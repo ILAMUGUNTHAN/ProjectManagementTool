@@ -25,7 +25,7 @@ namespace WindowsFormsApp1
                 if (value != null)
                 {
                     teamLeaderName.Text = value.EmployeeFirstName;
-                    profilePictureBox1.Image = Image.FromFile(value.EmpProfileLocation);
+                    profilePictureBox2.Image = Image.FromFile(value.EmpProfileLocation);
                 }
             }
         }
@@ -42,6 +42,16 @@ namespace WindowsFormsApp1
         private void OnProfileClicked(object sender, EventArgs e)
         {
             TeamLeaderClick?.Invoke(employee);
+        }
+
+        private void OnMouseEnter(object sender, EventArgs e)
+        {
+            teamLeaderName.ForeColor = Color.FromArgb(39, 55, 77);
+        }
+
+        private void OnMouseLeave(object sender, EventArgs e)
+        {
+            teamLeaderName.ForeColor = Color.FromArgb(82, 109, 130);
         }
     }
 }

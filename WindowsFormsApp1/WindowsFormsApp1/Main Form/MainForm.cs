@@ -16,7 +16,11 @@ namespace WindowsFormsApp1
         public MainForm()
         {
             InitializeComponent();
+            DataHandler.ConnectDatabase();
+            DataHandler.StoreEmployeeDetails();
+            EmployeeManager.LogInEmployee("paulrobin98@gmail.com", "Lucid123");
             subPagePanel.Visible = false;
+            profilePictureBox1.Image =Image.FromFile(EmployeeManager.CurrentEmployee.EmpProfileLocation);
             profilePicAndName1.EmployeeProfile = EmployeeManager.CurrentEmployee;
         }
 

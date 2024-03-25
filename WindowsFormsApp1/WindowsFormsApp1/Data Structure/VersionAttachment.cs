@@ -9,6 +9,7 @@ namespace WindowsFormsApp1
     public class VersionAttachment
     {
         public int VersionID { get; set; }
+        public string DisplayName { get; set; }
         public string AttachmentName { get; set; }
         public string AttachmentLocation { get; set; }
     }

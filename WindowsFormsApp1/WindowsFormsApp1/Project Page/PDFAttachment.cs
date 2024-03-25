@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,10 +10,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Project_Page
 {
-    public partial class NoResultFound : UserControl
+    public partial class PDFAttachment : UserControl
     {
-
-        public string MessageText
+        public string FileName
         {
             get
             {
@@ -26,9 +25,16 @@ namespace WindowsFormsApp1.Project_Page
             }
         }
 
-        public NoResultFound()
+        public event EventHandler AttachmentRemove;
+
+        public PDFAttachment()
         {
             InitializeComponent();
+        }
+
+        private void OnCloseCLick(object sender, EventArgs e)
+        {
+            AttachmentRemove?.Invoke(this, e);
         }
     }
 }

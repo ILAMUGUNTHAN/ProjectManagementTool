@@ -45,57 +45,60 @@
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(490, 103);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(327, 67);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
             this.panel1.Controls.Add(this.teamLeaderName);
             this.panel1.Controls.Add(this.profilePictureBox2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(4, 5);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(482, 82);
+            this.panel1.Size = new System.Drawing.Size(321, 54);
             this.panel1.TabIndex = 0;
             // 
             // teamLeaderName
             // 
             this.teamLeaderName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.teamLeaderName.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.teamLeaderName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.teamLeaderName.Location = new System.Drawing.Point(82, 0);
-            this.teamLeaderName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.teamLeaderName.Font = new System.Drawing.Font("Ebrima", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.teamLeaderName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
+            this.teamLeaderName.Location = new System.Drawing.Point(54, 0);
             this.teamLeaderName.Name = "teamLeaderName";
-            this.teamLeaderName.Size = new System.Drawing.Size(400, 82);
+            this.teamLeaderName.Size = new System.Drawing.Size(267, 54);
             this.teamLeaderName.TabIndex = 2;
             this.teamLeaderName.Text = "Team Leader Name";
             this.teamLeaderName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.teamLeaderName.Click += new System.EventHandler(this.OnProfileClicked);
+            this.teamLeaderName.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.teamLeaderName.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // profilePictureBox2
             // 
             this.profilePictureBox2.Dock = System.Windows.Forms.DockStyle.Left;
             this.profilePictureBox2.Location = new System.Drawing.Point(0, 0);
+            this.profilePictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.profilePictureBox2.Name = "profilePictureBox2";
-            this.profilePictureBox2.Size = new System.Drawing.Size(82, 82);
+            this.profilePictureBox2.Size = new System.Drawing.Size(54, 54);
+            this.profilePictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.profilePictureBox2.TabIndex = 3;
             this.profilePictureBox2.TabStop = false;
+            this.profilePictureBox2.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.profilePictureBox2.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // TeamLeaderPicAndName
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "TeamLeaderPicAndName";
-            this.Size = new System.Drawing.Size(490, 103);
+            this.Size = new System.Drawing.Size(327, 67);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.profilePictureBox2)).EndInit();
@@ -108,7 +111,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label teamLeaderName;
-        private ProfilePictureBox profilePictureBox1;
         private ProfilePictureBox profilePictureBox2;
     }
 }

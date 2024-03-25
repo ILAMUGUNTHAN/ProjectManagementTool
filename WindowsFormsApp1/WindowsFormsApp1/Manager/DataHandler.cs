@@ -101,17 +101,31 @@ namespace WindowsFormsApp1
             });
         }
 
-        public static void AddVersionAttachments(List<VersionAttachment> versionAttachments)
+        public static void AddVersionAttachments(List<VersionAttachment> versionAttachments, int versionID)
         {
-            foreach(var Iter in versionAttachments)
+            string savePath = @"\\\\SPARE-2709DFQ\\Project Management Tool\\Version Attachment"; // Change this to your desired save path
+            string filePath;
+            try
             {
-                manager.InsertData("versionattachment", new ParameterData[]
+                foreach (var Iter in versionAttachments)
                 {
-                    new ParameterData("VersionID", Iter.VersionID),
-                    new ParameterData("AttachmentName", Iter.AttachmentName),
-                    new ParameterData("AttachmentLocation", Iter.AttachmentLocation)
-                });
+                    filePath = System.IO.Path.Combine(savePath, Iter.AttachmentName);
+                    System.IO.File.Copy(Iter.AttachmentLocation, filePath, true);
+
+                    manager.InsertData("versionattachment", new ParameterData[]
+                    {
+                        new ParameterData("VersionID", versionID),
+                        new ParameterData("DisplayName", Iter.DisplayName),
+                        new ParameterData("AttachmentName", Iter.AttachmentName),
+                        new ParameterData("AttachmentLocation", filePath)
+                    });
+                }
             }
+            catch
+            {
+                ;
+            }
+            
         }
 
         public static void AddTaskAttachment(List<TaskAttachment> taskAttachment)
@@ -313,7 +327,6 @@ namespace WindowsFormsApp1
                     EmpPassword = result["EmpPassword"][ctr].ToString()
                 });
             }
-
             EmployeeManager.EmployeeCollection = employeeResult;
         }
 
