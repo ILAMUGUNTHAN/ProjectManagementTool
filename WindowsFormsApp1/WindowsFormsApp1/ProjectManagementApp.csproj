@@ -35,22 +35,25 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DatabaseLibrary">
-      <HintPath>..\..\..\..\..\Documents\IPMsg\AutoSave\Components\DatabaseLibrary.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\Components\DatabaseLibrary.dll</HintPath>
     </Reference>
     <Reference Include="GoLibrary">
-      <HintPath>..\..\..\..\..\Documents\IPMsg\AutoSave\Components\GoLibrary.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\Components\GoLibrary.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data">
-      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\MySQL\MySQL Installer for Windows\MySql.Data.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\Components\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="MySqlBackup">
-      <HintPath>..\..\..\..\..\Documents\IPMsg\AutoSave\Components\MySqlBackup.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\Components\MySqlBackup.dll</HintPath>
     </Reference>
     <Reference Include="MySQLDatabase">
-      <HintPath>..\..\..\..\..\Documents\IPMsg\AutoSave\Components\MySQLDatabase.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\Components\MySQLDatabase.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\..\..\..\..\Desktop\Components\System.Data.SQLite.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -62,6 +65,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BarChart\UCBarChart.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BarChart\UCBarChart.Designer.cs">
+      <DependentUpon>UCBarChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BoardView\UCCompletedStatus.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BoardView\UCCompletedStatus.Designer.cs">
+      <DependentUpon>UCCompletedStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BoardView\UCInprogressStatus.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BoardView\UCInprogressStatus.Designer.cs">
+      <DependentUpon>UCInprogressStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BoardView\UCTaskBoard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BoardView\UCTaskBoard.Designer.cs">
+      <DependentUpon>UCTaskBoard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BoardView\UCToDoStatus.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BoardView\UCToDoStatus.Designer.cs">
+      <DependentUpon>UCToDoStatus.cs</DependentUpon>
+    </Compile>
     <Compile Include="CommonControls\SearchBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -82,6 +115,12 @@
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login Page\UCLoginPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Login Page\UCLoginPage.Designer.cs">
+      <DependentUpon>UCLoginPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Main Form\MainForm.cs">
       <SubType>Form</SubType>
@@ -186,11 +225,35 @@
     <Compile Include="Task Page\Task Custom Control\RoundedLabel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="View Project\ProjectBoard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View Project\ProjectBoard.Designer.cs">
+      <DependentUpon>ProjectBoard.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="BarChart\UCBarChart.resx">
+      <DependentUpon>UCBarChart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BoardView\UCCompletedStatus.resx">
+      <DependentUpon>UCCompletedStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BoardView\UCInprogressStatus.resx">
+      <DependentUpon>UCInprogressStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BoardView\UCTaskBoard.resx">
+      <DependentUpon>UCTaskBoard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BoardView\UCToDoStatus.resx">
+      <DependentUpon>UCToDoStatus.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CommonControls\SearchBar.resx">
       <DependentUpon>SearchBar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login Page\UCLoginPage.resx">
+      <DependentUpon>UCLoginPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main Form\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -245,6 +308,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View Project\ProjectBoard.resx">
+      <DependentUpon>ProjectBoard.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -290,6 +356,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Images\Ticket Normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Business Management Daily.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\eye-Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\icons8-email-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\icons8-eye-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\icons8-password-32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
