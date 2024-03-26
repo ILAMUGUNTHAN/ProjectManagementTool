@@ -8,10 +8,13 @@ namespace WindowsFormsApp1
 {
     public enum ProjectStatus
     {
+        UpComing,
+        OnStage,
         OnProcess,
-        Completed,
-        Upcoming
+        Deployment,
+        Completed
     }
+
     public class ProjectVersion
     {
         public int VersionID { get; set; }

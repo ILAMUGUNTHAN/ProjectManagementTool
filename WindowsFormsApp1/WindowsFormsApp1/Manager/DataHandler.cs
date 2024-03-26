@@ -101,17 +101,31 @@ namespace WindowsFormsApp1
             });
         }
 
-        public static void AddVersionAttachments(List<VersionAttachment> versionAttachments)
+        public static void AddVersionAttachments(List<VersionAttachment> versionAttachments, int versionID)
         {
-            foreach(var Iter in versionAttachments)
+            string savePath = @"\\\\SPARE-2709DFQ\\Project Management Tool\\Version Attachment"; // Change this to your desired save path
+            string filePath;
+            try
             {
-                manager.InsertData("versionattachment", new ParameterData[]
+                foreach (var Iter in versionAttachments)
                 {
-                    new ParameterData("VersionID", Iter.VersionID),
-                    new ParameterData("AttachmentName", Iter.AttachmentName),
-                    new ParameterData("AttachmentLocation", Iter.AttachmentLocation)
-                });
+                    filePath = System.IO.Path.Combine(savePath, Iter.AttachmentName);
+                    System.IO.File.Copy(Iter.AttachmentLocation, filePath, true);
+
+                    manager.InsertData("versionattachment", new ParameterData[]
+                    {
+                        new ParameterData("VersionID", versionID),
+                        new ParameterData("DisplayName", Iter.DisplayName),
+                        new ParameterData("AttachmentName", Iter.AttachmentName),
+                        new ParameterData("AttachmentLocation", filePath)
+                    });
+                }
             }
+            catch
+            {
+                ;
+            }
+            
         }
 
         public static void AddTaskAttachment(List<TaskAttachment> taskAttachment)
@@ -125,6 +139,29 @@ namespace WindowsFormsApp1
                     new ParameterData("TaskAttachmentLocation", Iter.TaskAttachmentLocation)
                 });
             }
+        }
+
+        public static void AddSourceCode(List<SourceCode> sourceCodeAttachments)
+        {
+            foreach (var Iter in sourceCodeAttachments)
+            {
+                manager.InsertData("sourcecode", new ParameterData[]
+                {
+                    new ParameterData("CommitName", Iter.CommitName),
+                    new ParameterData("SourceCodeLocation", Iter.SourceCodeLocation),
+                    new ParameterData("SubmittedDate", Iter.SubmittedDate),
+                    new ParameterData("TaskID", Iter.TaskID)
+                });
+            }
+        }
+
+        public static void AddVersionSourceCode(VersionSourceCode sourceCode)
+        {
+            var x = manager.InsertData("versionsourcecode", new ParameterData[]
+            {
+                new ParameterData("VersionID", sourceCode.VersionID),
+                new ParameterData("SourceCodeLocation", sourceCode.VersionLocation)
+            });
         }
 
         public static void UpdateVersionAttachments(int versionID, List<VersionAttachment> versionAttachments)
@@ -156,6 +193,82 @@ namespace WindowsFormsApp1
                     new ParameterData("TaskAttachmentLocation", Iter.TaskAttachmentLocation)
                 });
             }
+        }
+
+        public static List<SourceCode> FetchLastCommitedSourceCodeByTaskID(int taskID)
+        {
+            List<SourceCode> result = new List<SourceCode>();
+
+            var x = manager.FetchData("sourcecode", $"TaskID={taskID}", orderBy:"SubmittedDate Desc", limitCount:1).Value;
+            DateTime date = Convert.ToDateTime(x["SubmittedDate"][0]);
+            var lastCommited = manager.FetchData("sourcecode", $"TaskID={taskID} AND SubmittedDate='{date}'").Value;
+
+            for (int ctr = 0; ctr < lastCommited["SourceCodeID"].Count; ctr++)
+            {
+                result.Add(new SourceCode()
+                {
+                    SourceCodeID = Convert.ToInt32(lastCommited["SourceCodeID"][ctr]),
+                    CommitName = Convert.ToString(lastCommited["CommitName"][ctr]),
+                    SourceCodeLocation = Convert.ToString(lastCommited["SourceCodeLocation"][ctr]),
+                    SubmittedDate = Convert.ToDateTime(lastCommited["SubmittedDate"][ctr]),
+                    TaskID = Convert.ToInt32(lastCommited["TaskID"][ctr])
+                });
+            }
+
+            return result;
+        }
+
+        public static List<List<SourceCode>> FetchAllSourceCodeByTaskID(int taskID)
+        {
+            List<List<SourceCode>> result = new List<List<SourceCode>>();
+            List<SourceCode> temp = new List<SourceCode>();
+            DateTime prevCommitDate = DateTime.MaxValue;
+
+            var sourceCodeCollection = manager.FetchDistinctData("sourcecode", $"TaskID={taskID}", orderBy: "SubmittedDate Desc").Value;
+
+            for(int ctr=0; ctr< sourceCodeCollection["SourceCodeID"].Count; ctr++)
+            {
+                if (prevCommitDate > Convert.ToDateTime(sourceCodeCollection["SubmittedDate"][ctr]))
+                {
+                    prevCommitDate = Convert.ToDateTime(sourceCodeCollection["SubmittedDate"][ctr]);
+                    result.Add(temp);
+                    temp = new List<SourceCode>();
+                }
+
+                temp.Add(new SourceCode()
+                {
+                    SourceCodeID = Convert.ToInt32(sourceCodeCollection["SourceCodeID"][ctr]),
+                    CommitName = Convert.ToString(sourceCodeCollection["CommitName"][ctr]),
+                    SourceCodeLocation = Convert.ToString(sourceCodeCollection["SourceCodeLocation"][ctr]),
+                    SubmittedDate = Convert.ToDateTime(sourceCodeCollection["SubmittedDate"][ctr]),
+                    TaskID = Convert.ToInt32(sourceCodeCollection["TaskID"][ctr])
+                });
+            }
+
+            return result;
+        }
+
+        public static VersionSourceCode FetchVersionSourceCodeByVersionID(int versionID)
+        {
+            var result = manager.FetchData("versionsourcecode", $"VersionID={versionID}").Value;
+
+            VersionSourceCode sourceCode = new VersionSourceCode()
+            {
+                VersionID = Convert.ToInt32(result["VersionID"][0]),
+                VersionLocation = Convert.ToString(result["SourceCodeLocation"][0])
+            };
+
+            return sourceCode;
+        }
+
+        public static void AddNotify(string header, string message, int assignedTo)
+        {
+            manager.InsertData("notification", new ParameterData[]
+                {
+                    new ParameterData("Header", header),
+                    new ParameterData("Message", message),
+                    new ParameterData("AssignedTo", assignedTo)
+                });
         }
 
         public static List<TaskAttachment> GetTaskAttachment(int taskID)
@@ -214,7 +327,6 @@ namespace WindowsFormsApp1
                     EmpPassword = result["EmpPassword"][ctr].ToString()
                 });
             }
-
             EmployeeManager.EmployeeCollection = employeeResult;
         }
 
@@ -269,7 +381,7 @@ namespace WindowsFormsApp1
                 }
                 else if(sts == "Upcoming")
                 {
-                    status = ProjectStatus.Upcoming;
+                    status = ProjectStatus.UpComing;
                 }
                 else
                 {

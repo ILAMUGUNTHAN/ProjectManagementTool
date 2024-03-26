@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
-    public class VersionAttachment
+    public class VersionSourceCode
     {
         public int VersionID { get; set; }
-        public string DisplayName { get; set; }
-        public string AttachmentName { get; set; }
-        public string AttachmentLocation { get; set; }
+        public string VersionLocation { get; set; }
     }
 }
