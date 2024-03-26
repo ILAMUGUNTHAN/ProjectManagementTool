@@ -31,6 +31,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.BtnClose = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.PasswordPanel = new System.Windows.Forms.Panel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
@@ -43,7 +44,6 @@
             this.pictureBoxEmail = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.BtnLogin = new System.Windows.Forms.Button();
-            this.BtnClose = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
@@ -108,6 +108,22 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(406, 318);
             this.tableLayoutPanel2.TabIndex = 1;
+            // 
+            // BtnClose
+            // 
+            this.BtnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
+            this.BtnClose.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BtnClose.FlatAppearance.BorderSize = 0;
+            this.BtnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnClose.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
+            this.BtnClose.Location = new System.Drawing.Point(5, 277);
+            this.BtnClose.Margin = new System.Windows.Forms.Padding(5, 10, 5, 5);
+            this.BtnClose.Name = "BtnClose";
+            this.BtnClose.Size = new System.Drawing.Size(396, 36);
+            this.BtnClose.TabIndex = 6;
+            this.BtnClose.Text = "Close";
+            this.BtnClose.UseVisualStyleBackColor = false;
             // 
             // label2
             // 
@@ -277,22 +293,6 @@
             this.BtnLogin.TabIndex = 3;
             this.BtnLogin.Text = "Login";
             this.BtnLogin.UseVisualStyleBackColor = false;
-            // 
-            // BtnClose
-            // 
-            this.BtnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
-            this.BtnClose.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BtnClose.FlatAppearance.BorderSize = 0;
-            this.BtnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnClose.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
-            this.BtnClose.Location = new System.Drawing.Point(5, 277);
-            this.BtnClose.Margin = new System.Windows.Forms.Padding(5, 10, 5, 5);
-            this.BtnClose.Name = "BtnClose";
-            this.BtnClose.Size = new System.Drawing.Size(396, 36);
-            this.BtnClose.TabIndex = 6;
-            this.BtnClose.Text = "Close";
-            this.BtnClose.UseVisualStyleBackColor = false;
             // 
             // UCLogIn
             // 

@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1.SignUp_LogIn_Page
+namespace WindowsFormsApp1.All_Issue_Page
 {
-    public partial class UCSignUp : UserControl
+    public partial class UCViewAllIssue : UserControl
     {
-        public UCSignUp()
+        public UCViewAllIssue()
         {
             InitializeComponent();
         }

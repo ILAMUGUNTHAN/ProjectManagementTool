@@ -62,6 +62,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="All Issue Page\UCViewAllIssue.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="All Issue Page\UCViewAllIssue.Designer.cs">
+      <DependentUpon>UCViewAllIssue.cs</DependentUpon>
+    </Compile>
     <Compile Include="Data Structure\TaskAttachment.cs" />
     <Compile Include="Data Structure\Employee.cs" />
     <Compile Include="Data Structure\ManagingEmployee.cs" />
@@ -148,12 +154,6 @@
     <Compile Include="SignUp LogIn Page\UCLogIn.Designer.cs">
       <DependentUpon>UCLogIn.cs</DependentUpon>
     </Compile>
-    <Compile Include="SignUp LogIn Page\UCSignUp.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="SignUp LogIn Page\UCSignUp.Designer.cs">
-      <DependentUpon>UCSignUp.cs</DependentUpon>
-    </Compile>
     <Compile Include="Task Page\Task Custom Control\Calendar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -164,6 +164,9 @@
     <Compile Include="Task Page\Task Custom Control\RoundedLabel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <EmbeddedResource Include="All Issue Page\UCViewAllIssue.resx">
+      <DependentUpon>UCViewAllIssue.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -206,9 +209,6 @@
     </Compile>
     <EmbeddedResource Include="SignUp LogIn Page\UCLogIn.resx">
       <DependentUpon>UCLogIn.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SignUp LogIn Page\UCSignUp.resx">
-      <DependentUpon>UCSignUp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Task Page\Task Custom Control\Calendar.resx">
       <DependentUpon>Calendar.cs</DependentUpon>
