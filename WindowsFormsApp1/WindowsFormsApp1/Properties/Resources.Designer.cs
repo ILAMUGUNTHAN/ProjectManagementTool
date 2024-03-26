@@ -73,26 +73,6 @@ namespace WindowsFormsApp1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Close {
-            get {
-                object obj = ResourceManager.GetObject("Close", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap close_red {
-            get {
-                object obj = ResourceManager.GetObject("close red", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap eye_Hover {
             get {
                 object obj = ResourceManager.GetObject("eye-Hover", resourceCulture);
@@ -163,9 +143,9 @@ namespace WindowsFormsApp1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_management_48 {
+        internal static System.Drawing.Bitmap icons8_password_32 {
             get {
-                object obj = ResourceManager.GetObject("icons8-management-48", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8-password-32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -173,9 +153,9 @@ namespace WindowsFormsApp1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_password_32 {
+        internal static System.Drawing.Bitmap No_Result {
             get {
-                object obj = ResourceManager.GetObject("icons8-password-32", resourceCulture);
+                object obj = ResourceManager.GetObject("No Result", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

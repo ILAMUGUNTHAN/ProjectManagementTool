@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,15 +18,7 @@ namespace WindowsFormsApp1
             InitializeComponent();
             //DataHandler.ConnectDatabase();
             //DataHandler.StoreEmployeeDetails();
-            //DataHandler.StoreEmployeeManagingDetails();
-            //DataHandler.StoreProjectDetails();
-            //DataHandler.StoreProjectVersionDetails();
             //EmployeeManager.LogInEmployee("paulrobin98@gmail.com", "Lucid123");
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            var x = VersionManager.FetchTeamLeadAvailableDate(3);
         }
     }
 }

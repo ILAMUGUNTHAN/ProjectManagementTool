@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApp1.BarChart
+﻿namespace WindowsFormsApp1
 {
     partial class UCBarChart
     {

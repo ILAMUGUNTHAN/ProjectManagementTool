@@ -35,22 +35,25 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DatabaseLibrary">
-      <HintPath>..\..\..\..\..\Documents\IPMsg\AutoSave\Components\DatabaseLibrary.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\Components\DatabaseLibrary.dll</HintPath>
     </Reference>
     <Reference Include="GoLibrary">
-      <HintPath>..\..\..\..\..\Documents\IPMsg\AutoSave\Components\GoLibrary.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\Components\GoLibrary.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data">
-      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\MySQL\MySQL Installer for Windows\MySql.Data.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\Components\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="MySqlBackup">
-      <HintPath>..\..\..\..\..\Documents\IPMsg\AutoSave\Components\MySqlBackup.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\Components\MySqlBackup.dll</HintPath>
     </Reference>
     <Reference Include="MySQLDatabase">
-      <HintPath>..\..\..\..\..\Documents\IPMsg\AutoSave\Components\MySQLDatabase.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\Components\MySQLDatabase.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\..\..\..\..\Desktop\Components\System.Data.SQLite.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -62,11 +65,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="All Issue Page\UCViewAllIssue.cs">
+    <Compile Include="BarChart\UCBarChart.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="All Issue Page\UCViewAllIssue.Designer.cs">
-      <DependentUpon>UCViewAllIssue.cs</DependentUpon>
+    <Compile Include="BarChart\UCBarChart.Designer.cs">
+      <DependentUpon>UCBarChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BoardView\UCCompletedStatus.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BoardView\UCCompletedStatus.Designer.cs">
+      <DependentUpon>UCCompletedStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BoardView\UCInprogressStatus.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BoardView\UCInprogressStatus.Designer.cs">
+      <DependentUpon>UCInprogressStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BoardView\UCTaskBoard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BoardView\UCTaskBoard.Designer.cs">
+      <DependentUpon>UCTaskBoard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BoardView\UCToDoStatus.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BoardView\UCToDoStatus.Designer.cs">
+      <DependentUpon>UCToDoStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CommonControls\SearchBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CommonControls\SearchBar.Designer.cs">
+      <DependentUpon>SearchBar.cs</DependentUpon>
     </Compile>
     <Compile Include="Data Structure\TaskAttachment.cs" />
     <Compile Include="Data Structure\Employee.cs" />
@@ -76,11 +109,18 @@
     <Compile Include="Data Structure\SourceCode.cs" />
     <Compile Include="Data Structure\Task.cs" />
     <Compile Include="Data Structure\VersionAttachment.cs" />
+    <Compile Include="Data Structure\VersionSourceCode.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login Page\UCLoginPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Login Page\UCLoginPage.Designer.cs">
+      <DependentUpon>UCLoginPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Main Form\MainForm.cs">
       <SubType>Form</SubType>
@@ -104,30 +144,6 @@
     <Compile Include="Manager\EmployeeManager.cs" />
     <Compile Include="Manager\TaskManager.cs" />
     <Compile Include="Manager\VersionManager.cs" />
-    <Compile Include="My Issue Page\PriorityDropDownForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="My Issue Page\PriorityDropDownForm.Designer.cs">
-      <DependentUpon>PriorityDropDownForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="My Issue Page\TypeDropDownForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="My Issue Page\TypeDropDownForm.Designer.cs">
-      <DependentUpon>TypeDropDownForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="My Issue Page\UCCreateIssue.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="My Issue Page\UCCreateIssue.Designer.cs">
-      <DependentUpon>UCCreateIssue.cs</DependentUpon>
-    </Compile>
-    <Compile Include="My Issue Page\UCTags.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="My Issue Page\UCTags.Designer.cs">
-      <DependentUpon>UCTags.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Project Page\AddProject.cs">
       <SubType>UserControl</SubType>
@@ -141,34 +157,103 @@
     <Compile Include="Project Page\AvailableTeamLeaders.Designer.cs">
       <DependentUpon>AvailableTeamLeaders.cs</DependentUpon>
     </Compile>
-    <Compile Include="Project Page\InitializePage.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Project Page\InitializePage.Designer.cs">
-      <DependentUpon>InitializePage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SignUp LogIn Page\UCLogIn.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="SignUp LogIn Page\UCLogIn.Designer.cs">
-      <DependentUpon>UCLogIn.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Task Page\Task Custom Control\Calendar.cs">
+    <Compile Include="Project Page\ChooseProject.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Task Page\Task Custom Control\Calendar.Designer.cs">
-      <DependentUpon>Calendar.cs</DependentUpon>
+    <Compile Include="Project Page\ChooseProject.Designer.cs">
+      <DependentUpon>ChooseProject.cs</DependentUpon>
     </Compile>
+    <Compile Include="Project Page\FileAttachment.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Project Page\FileAttachment.Designer.cs">
+      <DependentUpon>FileAttachment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Project Page\LatestUpgradedVersion.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Project Page\LatestUpgradedVersion.Designer.cs">
+      <DependentUpon>LatestUpgradedVersion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Project Page\NoResultFound.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Project Page\NoResultFound.Designer.cs">
+      <DependentUpon>NoResultFound.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Project Page\PDFAttachment.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Project Page\PDFAttachment.Designer.cs">
+      <DependentUpon>PDFAttachment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Project Page\ProjectInitializationPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Project Page\ProjectInitializationPage.Designer.cs">
+      <DependentUpon>ProjectInitializationPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Project Page\RippleButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Project Page\SelectedTeamLeader.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Project Page\SelectedTeamLeader.Designer.cs">
+      <DependentUpon>SelectedTeamLeader.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Project Page\TeamLeaderPicAndName.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Project Page\TeamLeaderPicAndName.Designer.cs">
+      <DependentUpon>TeamLeaderPicAndName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Project Page\TeamLeaderPicAndNameVertical.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Project Page\TeamLeaderPicAndNameVertical.Designer.cs">
+      <DependentUpon>TeamLeaderPicAndNameVertical.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Project Page\VersionUpgrade.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Project Page\VersionUpgrade.Designer.cs">
+      <DependentUpon>VersionUpgrade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Task Page\Task Custom Control\GraphicsExtension.cs" />
     <Compile Include="Task Page\Task Custom Control\RoundedLabel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <EmbeddedResource Include="All Issue Page\UCViewAllIssue.resx">
-      <DependentUpon>UCViewAllIssue.cs</DependentUpon>
+    <Compile Include="View Project\ProjectBoard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View Project\ProjectBoard.Designer.cs">
+      <DependentUpon>ProjectBoard.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="BarChart\UCBarChart.resx">
+      <DependentUpon>UCBarChart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BoardView\UCCompletedStatus.resx">
+      <DependentUpon>UCCompletedStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BoardView\UCInprogressStatus.resx">
+      <DependentUpon>UCInprogressStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BoardView\UCTaskBoard.resx">
+      <DependentUpon>UCTaskBoard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BoardView\UCToDoStatus.resx">
+      <DependentUpon>UCToDoStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CommonControls\SearchBar.resx">
+      <DependentUpon>SearchBar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login Page\UCLoginPage.resx">
+      <DependentUpon>UCLoginPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main Form\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -176,26 +261,42 @@
     <EmbeddedResource Include="Main Form\ProfilePicAndName.resx">
       <DependentUpon>ProfilePicAndName.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="My Issue Page\PriorityDropDownForm.resx">
-      <DependentUpon>PriorityDropDownForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="My Issue Page\TypeDropDownForm.resx">
-      <DependentUpon>TypeDropDownForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="My Issue Page\UCCreateIssue.resx">
-      <DependentUpon>UCCreateIssue.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="My Issue Page\UCTags.resx">
-      <DependentUpon>UCTags.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Project Page\AddProject.resx">
       <DependentUpon>AddProject.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Project Page\AvailableTeamLeaders.resx">
       <DependentUpon>AvailableTeamLeaders.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Project Page\InitializePage.resx">
-      <DependentUpon>InitializePage.cs</DependentUpon>
+    <EmbeddedResource Include="Project Page\ChooseProject.resx">
+      <DependentUpon>ChooseProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Project Page\FileAttachment.resx">
+      <DependentUpon>FileAttachment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Project Page\LatestUpgradedVersion.resx">
+      <DependentUpon>LatestUpgradedVersion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Project Page\NoResultFound.resx">
+      <DependentUpon>NoResultFound.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Project Page\PDFAttachment.resx">
+      <DependentUpon>PDFAttachment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Project Page\ProjectInitializationPage.resx">
+      <DependentUpon>ProjectInitializationPage.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Project Page\SelectedTeamLeader.resx">
+      <DependentUpon>SelectedTeamLeader.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Project Page\TeamLeaderPicAndName.resx">
+      <DependentUpon>TeamLeaderPicAndName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Project Page\TeamLeaderPicAndNameVertical.resx">
+      <DependentUpon>TeamLeaderPicAndNameVertical.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Project Page\VersionUpgrade.resx">
+      <DependentUpon>VersionUpgrade.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -207,11 +308,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="SignUp LogIn Page\UCLogIn.resx">
-      <DependentUpon>UCLogIn.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Task Page\Task Custom Control\Calendar.resx">
-      <DependentUpon>Calendar.cs</DependentUpon>
+    <EmbeddedResource Include="View Project\ProjectBoard.resx">
+      <DependentUpon>ProjectBoard.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -227,7 +325,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Images\close red.png" />
+    <None Include="Images\No Result.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Images\Notify Off.png" />
@@ -260,22 +358,19 @@
     <None Include="Images\Ticket Normal.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Images\Close.png" />
+    <None Include="Images\Business Management Daily.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\icons8-email-32.png" />
+    <None Include="Images\eye-Hover.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\icons8-password-32.png" />
+    <None Include="Images\icons8-email-32.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\icons8-eye-24.png" />
+    <None Include="Images\icons8-eye-24.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\eye-Hover.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-management-48.png" />
+    <None Include="Images\icons8-password-32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
