@@ -40,12 +40,18 @@ namespace WindowsFormsApp1.Project_Page
             panel6.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel6.Width, panel6.Height, 20, 20));
             panel7.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel7.Width, panel7.Height, 20, 20));
             panel8.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel8.Width, panel8.Height, 20, 20));
+            rippleButton2.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, rippleButton2.Width, rippleButton2.Height, 10, 10));
         }
 
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
             InitializeBorder();
+        }
+
+        private void OnChooseProject(object sender, EventArgs e)
+        {
+
         }
     }
 }

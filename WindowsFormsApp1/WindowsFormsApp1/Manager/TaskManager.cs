@@ -109,6 +109,20 @@ namespace WindowsFormsApp1
             }
         }
 
+        public static int FetchTaskCount(int versionID)
+        {
+            int result = 0;
+            foreach (var Iter in TaskCollection)
+            {
+                if (Iter.VersionID == versionID)
+                {
+                    result++;
+                }
+            }
+
+            return result;
+        }
+
         public static List<Task> TaskCollection;
     }
 }

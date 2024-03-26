@@ -62,6 +62,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommonControls\SearchBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CommonControls\SearchBar.Designer.cs">
+      <DependentUpon>SearchBar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Data Structure\TaskAttachment.cs" />
     <Compile Include="Data Structure\Employee.cs" />
     <Compile Include="Data Structure\ManagingEmployee.cs" />
@@ -112,6 +118,12 @@
     <Compile Include="Project Page\AvailableTeamLeaders.Designer.cs">
       <DependentUpon>AvailableTeamLeaders.cs</DependentUpon>
     </Compile>
+    <Compile Include="Project Page\ChooseProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Project Page\ChooseProject.Designer.cs">
+      <DependentUpon>ChooseProject.cs</DependentUpon>
+    </Compile>
     <Compile Include="Project Page\FileAttachment.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -157,6 +169,12 @@
     <Compile Include="Project Page\TeamLeaderPicAndName.Designer.cs">
       <DependentUpon>TeamLeaderPicAndName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Project Page\TeamLeaderPicAndNameVertical.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Project Page\TeamLeaderPicAndNameVertical.Designer.cs">
+      <DependentUpon>TeamLeaderPicAndNameVertical.cs</DependentUpon>
+    </Compile>
     <Compile Include="Project Page\VersionUpgrade.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -168,6 +186,9 @@
     <Compile Include="Task Page\Task Custom Control\RoundedLabel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <EmbeddedResource Include="CommonControls\SearchBar.resx">
+      <DependentUpon>SearchBar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -182,6 +203,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Project Page\AvailableTeamLeaders.resx">
       <DependentUpon>AvailableTeamLeaders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Project Page\ChooseProject.resx">
+      <DependentUpon>ChooseProject.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Project Page\FileAttachment.resx">
       <DependentUpon>FileAttachment.cs</DependentUpon>
@@ -204,6 +228,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Project Page\TeamLeaderPicAndName.resx">
       <DependentUpon>TeamLeaderPicAndName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Project Page\TeamLeaderPicAndNameVertical.resx">
+      <DependentUpon>TeamLeaderPicAndNameVertical.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Project Page\VersionUpgrade.resx">
       <DependentUpon>VersionUpgrade.cs</DependentUpon>
