@@ -34,8 +34,10 @@ namespace WindowsFormsApp1
         public Color HoverColor { get; set; }
         public Color ClickColor { get; set; }
         public Color HighlightColor {  get; set; }
+
         public RoundedLabel()
         {
+            border = new Pen(NormalColor, 2);
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, BorderRadius, BorderRadius));
             AutoSize = false;
         }
@@ -60,44 +62,49 @@ namespace WindowsFormsApp1
         protected override void OnMouseEnter(EventArgs e)
         {
             base.OnMouseEnter(e);
-            if (!IsClicked && !isHighlighted)
-            {
-                BackColor = HoverColor;
-            }
+            border = new Pen(Color.FromArgb(72, 99, 120), 2);
+            this.Invalidate();
         }
 
         protected override void OnMouseLeave(EventArgs e)
         {
             base.OnMouseLeave(e);
-            if (!IsClicked && !isHighlighted)
-            {
-                BackColor = NormalColor;
-            }
+            border = new Pen(NormalColor, 2);
+            this.Invalidate();
         }
 
-        protected override void OnClick(EventArgs e)
+        //protected override void OnClick(EventArgs e)
+        //{
+        //    base.OnClick(e);
+        //    IsClicked = !IsClicked;
+
+        //    if (IsClicked)
+        //    {
+        //        BackColor = ClickColor;
+        //        ForeColor = NormalColor;
+        //    }
+        //    else
+        //    {
+        //        BackColor = NormalColor;
+        //        ForeColor = Color.FromArgb(82, 109, 130);
+        //        if (isHighlighted)
+        //        {
+        //            BackColor = HighlightColor;
+        //        }
+        //    }
+        //    border = new Pen(Color.FromArgb(72, 99, 120), 2);
+        //}
+
+        protected override void OnPaint(PaintEventArgs e)
         {
-            base.OnClick(e);
-            if (ClickCount % 2 == 0)
-            {
-                BackColor = ClickColor;
-                ForeColor = NormalColor;
-                IsClicked = true;
-            }
-            else
-            {
-                BackColor = NormalColor;
-                ForeColor = Color.FromArgb(82, 109, 130);
-                if(isHighlighted)
-                {
-                    BackColor = HighlightColor;
-                }
-                IsClicked = false;
-            }
-            ClickCount++;
+            base.OnPaint(e);
+            
+            e.Graphics.DrawRectangle(border, new Rectangle(0, 0, Width - 1, Height - 1));
+            border.Dispose();
         }
 
-        private bool IsClicked = false, isHighlighted = false;
-        private int ClickCount = 0;
+        private Pen border;
+        public bool IsClicked = false, isHighlighted = false;
+        public int ClickCount = 0;
     }
 }

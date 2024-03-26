@@ -100,6 +100,26 @@ namespace WindowsFormsApp1
             return null;
         }
 
+        public static List<Employee> FetchTeamLeadersFromManagerID()
+        {
+            List<Employee> result = new List<Employee>();
+            HashSet<int> teamLeadID = new HashSet<int>();
+            foreach(var Iter in ManagingEmployeeCollection)
+            {
+                if(Iter.ManagerID == CurrentEmployee.EmployeeID)
+                {
+                    teamLeadID.Add(Iter.TeamLeadID);
+                }
+            }
+            
+            foreach(var Iter in teamLeadID)
+            {
+                result.Add(FetchEmployeeFromID(Iter));
+            }
+
+            return result;
+        }
+
         private static Employee FetchEmployeeFromID(int empID)
         {
             foreach(var Iter in EmployeeCollection)
@@ -130,7 +150,7 @@ namespace WindowsFormsApp1
             DataHandler.StoreEmployeeManagingDetails();
             DataHandler.StoreProjectDetails();
             DataHandler.StoreProjectVersionDetails();
-            DataHandler.StoreTaskDetails();
+            //DataHandler.StoreTaskDetails();
         }
 
         public static List<Employee> EmployeeCollection;

@@ -117,33 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="projectPictureBox.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DAAACwwBP0AiyAAAArdJREFUSEvtVk1oE0EUjoI/iF5UBOsfiAri0YM3T6JQ8CCKF0+iFg8KHkQ9CBHx
-        JohCQTbZXZuCCMHWndkYqunOpCIUpAcP/tWfQkX0ULyoh1p/4vdmJ5vdZBPB7NKLH3zM5s1775s3+2ay
-        mSSQu1/Zph/TRbFYXFwfTSZsi8uaxeQZNZkGarXaApPJfouLj1apstnk3l4I/yZhGk1HntCu3aMwXFll
-        MXEM7IPAgKrOr3DS4HK1yeXZwMbFL9gvKd8mDg49WKNT/h2WI3Yh0TQSTkHgZ0MgEBo3OF+G5+sRO5Of
-        wQlFLr5o36JO2xl5Jk8hcBZbeA0rvhpJHCYT3DAmFlHiug2v42k2m11ouuJIZMGO3KPTt6K/KJcjyR21
-        UuYdNrm4HAS2IxM5ajQsdBScNJ2HPRQL+4+wH4p4faNcXqKlGsgxbwcmX9KKUfEWiGbDgZ2Iyi6azuMV
-        +ZGRlS2Vhv2YOK/lfOR5dT8Ev6HSOax0ECu/GxfYjtTViLmNHIV2oj7FV/ve2AYlekvKpQj4AMEXCDK6
-        IhNP4gXD1I2mGgkGClSGLpAry/X+zsUJBnzWqBaGJIQJyHUhJNJE8YYWl4Ho6boxTpiaIRoYIhPntFsA
-        y5WHVIdz+arZH/nfBu8XnfteHR3/kmgRpuOVL4mdcaQ57RaAciDnQdsV+yKiTL4LRAm26/XStegHdL/V
-        lAPdPU03GnZr2BcWUwavbNQuUSQq7Fd4xSx5m/D7OY31f7QWJC2Mqmdtt7pVvW+3egC2o9olisSFVdXi
-        ERqwD7bvNGqXKNIQjnC+hG0uj2uXKNIUxpZ/MobG1mqXKNITFnOm4+3W061ISxi/T+qpeKQhjLNc0Ob2
-        SF5YjMd+bTQD7X4TnMHB9z/S/plihpppwB1dp1N3Bt0ydNaSYL5U3a7T/sd8I5P5Aw1MHQXaA8euAAAA
-        AElFTkSuQmCC
-</value>
-  </data>
-  <data name="closePictureBox.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DAAACwwBP0AiyAAAAORJREFUSEvtllEKwkAMRPdCegu/9FYKKnhe9a/OIAPLknaTtNCPduBBaTf7SCjd
-        lj2bzxFc/pehsIa1qZzAGwzgxRvO3ABrvuDMG5HUUuGRSyood0+MI2ql4gHGcgdWzQe4xs7xWBsISz4m
-        Fe6u25G11GOPrHWFnVkbCXbZ6/QJUul1M0W40zYZ+WypEpEvJlU88sWlzCriVUa9ysuVkYq0vPcB4XPP
-        mlB6ndbdRNZOhh90awNhddHr3HUu8wjjUWZtMDW6Mbn7WGSyPwJXUNfM/guJvKGSp6TKAWSKWcPaPZtN
-        KT+EO/pKoKe49AAAAABJRU5ErkJggg==
-</value>
-  </data>
 </root>

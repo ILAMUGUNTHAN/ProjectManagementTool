@@ -4,21 +4,17 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1
+namespace WindowsFormsApp1.Project_Page
 {
-    public partial class Form1 : Form
+    public partial class ChooseProject : Form
     {
-        public Form1()
+        public ChooseProject()
         {
             InitializeComponent();
-            DataHandler.ConnectDatabase();
-            DataHandler.StoreEmployeeDetails();
-            EmployeeManager.LogInEmployee("paulrobin98@gmail.com", "Lucid123");
         }
     }
 }

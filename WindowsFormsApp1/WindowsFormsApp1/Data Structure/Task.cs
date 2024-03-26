@@ -9,10 +9,10 @@ namespace WindowsFormsApp1
     public enum TaskStatus
     {
         NotYetStarted,
-        Stuck,
         OnProcess,
-        Done, 
-        Archive
+        Stuck,
+        UnderReview, 
+        Done
     }
 
     public enum Priority

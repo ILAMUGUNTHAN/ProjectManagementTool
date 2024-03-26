@@ -22,12 +22,15 @@ namespace WindowsFormsApp1
             set
             {
                 teamLeaders = value;
-                if(value!=null)
+                if(value!=null && value.Count > 0)
                 {
                     InitializeProfiles();
                 }
             }
         }
+
+        public delegate void EmployeeHandler(Employee employee);
+        public event EmployeeHandler TeamLeaderClick;
 
         public AvailableTeamLeaders()
         {
@@ -36,16 +39,21 @@ namespace WindowsFormsApp1
 
         private void InitializeProfiles()
         {
-            foreach(var Iter in teamLeaders)
+            profilePanel.Controls.Clear();
+            TeamLeaderPicAndName uc;
+            foreach (var Iter in teamLeaders)
             {
-                Panel newPanel = new Panel();
-                newPanel.Dock = DockStyle.Top;
-                profilePanel.Controls.Add(newPanel);
-                ProfilePicAndName newProfilePicAndName = new ProfilePicAndName();
-                newProfilePicAndName.EmployeeProfile = Iter;
-                newProfilePicAndName.Dock = DockStyle.Top;
-                profilePanel.Controls.Add(newProfilePicAndName);
+                uc = new TeamLeaderPicAndName();
+                uc.EmployeeProfile = Iter;
+                uc.Dock = DockStyle.Top;
+                uc.TeamLeaderClick += OnTeamLeaderClicked;
+                profilePanel.Controls.Add(uc);
             }
+        }
+
+        private void OnTeamLeaderClicked(Employee teamLead)
+        {
+            TeamLeaderClick?.Invoke(teamLead);
         }
 
         private List<Employee> teamLeaders;
