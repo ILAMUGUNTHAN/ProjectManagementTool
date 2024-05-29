@@ -28,7 +28,7 @@
 <img src="https://i.postimg.cc/90pWHF5Y/Add-Project-Init.png" alt="" width="400px">
 </p>
  
-<h2 id="technologies">💻 Technologies</h2>
+<h2 id="tech">💻 Technologies</h2>
 
 - C#
 - .Net (Windows Forms)
